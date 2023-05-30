@@ -29,3 +29,4 @@ LibraryJungle
 CarpetLibrary
 Personal Bookshelf
 Rain Bookshelf
+Leaf Library
