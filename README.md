@@ -12,6 +12,7 @@ La información de los libros son:
   - Título
   - Número de páginas
   - Ha sido leído o no
+  - Extra: Agregar portada del libro
 
 Otros inputs:
   - Agregar botón para eliminar un libro
