@@ -16,3 +16,15 @@ La información de los libros son:
 Otros inputs:
   - Agregar botón para eliminar un libro
   - Agregar botón para toggle el estado de leído
+
+
+# Ideas de nombres
+Library
+MyLibrary
+eLibrary
+MagicLibrary
+ConcreteLibrary
+LibraryJungle
+CarpetLibrary
+Personal Bookshelf
+Rain Bookshelf
