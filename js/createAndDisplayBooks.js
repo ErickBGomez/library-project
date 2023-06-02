@@ -68,5 +68,10 @@ function DisplayBooks() {
 
 books.push(new Book("Dracula", "Bram Stoker", 418, false));
 books.push(new Book("The Divine Comedy", "Dante Alighieri", 304, true));
+books.push(
+  new Book("The Little Prince", "Antoine de Saint-Exupéry", 96, false)
+);
+books.push(new Book("Don Quixote", "Miguel de Cervantes", 462, true));
+books.push(new Book("Luz negra", "Álvaro Menéndez Leal", 130, true));
 
 DisplayBooks();
