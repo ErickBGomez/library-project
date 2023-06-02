@@ -1,3 +1,10 @@
+:root {
+  /* Define global colors */
+  --main-accent: #7cc15c;
+  --body-background: #ececec;
+  --footer-background: #2f2f2f;
+}
+
 *,
 *::before,
 *::after {
@@ -6,4 +13,5 @@
 
 body {
   margin: 0;
+  background-color: var(--body-background);
 }
