@@ -88,6 +88,12 @@ header {
   top: 10px;
 }
 
+.actions-icons > a:link,
+.actions-icons > a:visited,
+.actions-icons > i {
+  color: var(--alt-text-color);
+}
+
 .actions-icons i {
   padding: 7px;
   border-radius: 10px;
