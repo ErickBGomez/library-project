@@ -109,18 +109,26 @@ header {
   gap: 10px;
 
   background-color: var(--green-accent);
-  color: var(--alt-text-color);
-  font-size: 2.4rem;
-  font-weight: 800;
   padding: 16px 0 16px 0;
 
   box-shadow: 0 0 32px 12px #33333336;
+}
+
+.header-title {
+  color: var(--alt-text-color);
+  font-size: 2.4rem;
+  font-weight: 800;
 }
 
 .logo {
   width: 64px;
   height: 64px;
   background-color: var(--alt-text-color);
+}
+
+.header-title,
+.logo {
+  user-select: none;
 }
 
 /* Action buttons */
@@ -171,6 +179,9 @@ main {
   border-radius: 12px;
   padding: 10px;
   box-shadow: 0 0 14px 5px #a3a3a32e;
+
+  cursor: pointer;
+  user-select: none;
 }
 
 .book-card .cover {
