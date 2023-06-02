@@ -3,6 +3,7 @@
   --green-accent: #7cc15c;
   --green-accent-active: #5db651;
   --green-accent-hover: #93d874;
+  --secondary-active: #eaeaea;
   --body-background: #ececec;
   --footer-background: #2f2f2f;
   --text-color: #202020;
@@ -55,6 +56,48 @@ p {
   margin: 0;
 }
 
+/* Button states */
+button {
+  cursor: pointer;
+}
+
+.primary,
+.secondary {
+  border-radius: 10px;
+  transition: 100ms;
+}
+
+.primary {
+  background-color: var(--green-accent);
+  border: none;
+  color: var(--alt-text-color);
+}
+
+.primary:hover {
+  background-color: var(--green-accent-hover);
+}
+
+.primary:active {
+  background-color: var(--green-accent-active);
+}
+
+.secondary {
+  background-color: var(--alt-text-color);
+  border: 4px solid var(--green-accent);
+  color: var(--green-accent);
+}
+
+.secondary:hover {
+  border-color: var(--green-accent-hover);
+  color: var(--green-accent-hover);
+}
+
+.secondary:active {
+  border-color: var(--green-accent-active);
+  color: var(--green-accent-active);
+  background-color: var(--secondary-active);
+}
+
 /* Header */
 
 header {
@@ -99,16 +142,6 @@ header {
   border-radius: 10px;
   cursor: pointer;
   transition: var(--hover-transition);
-}
-
-.actions-icons i:hover {
-  background-color: var(--green-accent-hover);
-  transition: var(--hover-transition);
-}
-
-.actions-icons i:active {
-  background-color: var(--green-accent-active);
-  transition: var(--active-transition);
 }
 
 /* Main elements */
@@ -156,13 +189,7 @@ i.empty-library-icon {
   align-items: center;
   justify-content: center;
   padding: 7px;
-  background-color: var(--green-accent);
-  border: none;
-  border-radius: 10px;
-  color: var(--alt-text-color);
   box-shadow: 0 0 10px 4px #4848483a;
-
-  cursor: pointer;
 }
 
 .create-book-button i {
