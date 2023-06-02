@@ -1,4 +1,4 @@
-const books = [];
+const books = [1];
 
 // Select DOM elements
 const emptyLibraryText = document.querySelector(".empty-library");

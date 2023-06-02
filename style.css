@@ -3,6 +3,7 @@
   --green-accent: #7cc15c;
   --green-accent-active: #5db651;
   --green-accent-hover: #93d874;
+  --book-cover-acent: #d2eac8;
   --secondary-active: #eaeaea;
   --body-background: #ececec;
   --footer-background: #2f2f2f;
@@ -153,6 +154,38 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.book-card {
+  background-color: var(--alt-text-color);
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 0 14px 5px #a3a3a32e;
+}
+
+.book-card .cover {
+  background-color: var(--book-cover-acent);
+  aspect-ratio: 191 / 242;
+  width: 150px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+i.cover-icon {
+  font-size: 4.5rem;
+  color: #ffffffbf;
+}
+
+.book-card .title {
+  font-size: 1.1rem;
+  margin: 10px 0 5px 0;
+}
+
+.book-card .author {
+  font-size: 0.9rem;
+  color: var(--subtext-color);
 }
 
 /* Empty library */
