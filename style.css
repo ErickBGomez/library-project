@@ -114,12 +114,15 @@ header {
 /* Main elements */
 
 main {
+  position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
+/* Empty library */
 
 .empty-library {
   text-align: center;
@@ -139,6 +142,31 @@ p.empty-library-subtitle {
 
 i.empty-library-icon {
   font-size: 4.2rem;
+}
+
+/* Create book */
+
+.create-book {
+  position: absolute;
+  bottom: 25px;
+}
+
+.create-book-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px;
+  background-color: var(--green-accent);
+  border: none;
+  border-radius: 10px;
+  color: var(--alt-text-color);
+  box-shadow: 0 0 10px 4px #4848483a;
+
+  cursor: pointer;
+}
+
+.create-book-button i {
+  font-size: 3.5rem;
 }
 
 /* Footer */
