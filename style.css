@@ -166,6 +166,7 @@ main {
 }
 
 .book-card {
+  position: relative;
   background-color: var(--alt-text-color);
   border-radius: 12px;
   padding: 10px;
@@ -194,6 +195,24 @@ i.cover-icon {
 .book-card .author {
   font-size: 0.9rem;
   color: var(--subtext-color);
+}
+
+i.read-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  background-color: var(--alt-text-color);
+  border-bottom-left-radius: 5px;
+  color: var(--green-accent);
+}
+
+.book-card.read i.read-icon {
+  display: block;
+}
+
+.book-card i.read-icon {
+  display: none;
 }
 
 /* Empty library */
