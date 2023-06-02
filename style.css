@@ -25,17 +25,34 @@ body {
 }
 
 header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
   background-color: var(--green-accent);
   color: var(--alt-text-color);
+  font-size: 2.4rem;
+  font-weight: 800;
+  padding: 16px 0 16px 0;
+}
+
+.logo {
+  width: 64px;
+  height: 64px;
+  background-color: var(--alt-text-color);
 }
 
 footer {
   background-color: var(--footer-background);
   color: var(--alt-text-color);
+  padding: 10px 0 10px 0;
+  text-align: center;
 }
 
 a:link,
 a:visited {
+  font-weight: 600;
   text-decoration: none;
   color: var(--green-accent);
 }
