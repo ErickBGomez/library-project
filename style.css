@@ -1,6 +1,6 @@
 :root {
   /* Define global colors */
-  --main-accent: #7cc15c;
+  --green-accent: #7cc15c;
   --body-background: #ececec;
   --footer-background: #2f2f2f;
 }
@@ -14,4 +14,12 @@
 body {
   margin: 0;
   background-color: var(--body-background);
+}
+
+header {
+  background-color: var(--green-accent);
+}
+
+footer {
+  background-color: var(--footer-background);
 }
