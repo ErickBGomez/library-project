@@ -156,6 +156,15 @@ main {
   justify-content: center;
 }
 
+.books-container {
+  display: grid;
+  width: 55vw;
+  grid-template-columns: repeat(auto-fit, 175px);
+  grid-auto-rows: min-content;
+  justify-content: center;
+  gap: 25px;
+}
+
 .book-card {
   background-color: var(--alt-text-color);
   border-radius: 12px;
@@ -166,7 +175,6 @@ main {
 .book-card .cover {
   background-color: var(--book-cover-acent);
   aspect-ratio: 191 / 242;
-  width: 150px;
   border-radius: 7px;
   display: flex;
   align-items: center;
@@ -179,7 +187,7 @@ i.cover-icon {
 }
 
 .book-card .title {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin: 10px 0 5px 0;
 }
 
