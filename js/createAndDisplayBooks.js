@@ -11,14 +11,6 @@ function Book(title, author, pages, readState) {
   this.readState = readState;
 }
 
-function DisplayBooks() {
-  if (books.length) {
-    emptyLibraryText.style.display = "none";
-  } else {
-    emptyLibraryText.style.display = "block";
-  }
-}
-
 function CreateBookCard(book) {
   // Book card container
   const bookCard = document.createElement("div");
@@ -62,6 +54,16 @@ function CreateBookCard(book) {
   bookCard.appendChild(bookReadStateIcon);
 
   booksContainer.appendChild(bookCard);
+}
+
+function DisplayBooks() {
+  if (books.length) {
+    emptyLibraryText.style.display = "none";
+
+    books.forEach((book) => CreateBookCard(book));
+  } else {
+    emptyLibraryText.style.display = "block";
+  }
 }
 
 books.push(new Book("Dracula", "Bram Stoker", 418, false));
