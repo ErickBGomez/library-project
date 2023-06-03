@@ -59,12 +59,45 @@
 
     <div class="dialog-boxes">
       <dialog id="create-book-dialog" open>
-        <section class="cover-section">
-          <div class="book-cover-image">
-            <i class="material-symbols-outlined book-icon">book</i>
+        <section class="cover">
+          <div class="cover-image">
+            <i class="material-symbols-outlined fill cover-icon">book</i>
           </div>
         </section>
-        <section class="inputs-section"></section>
+        <section class="inputs-section">
+          <div class="input-container">
+            <label for="book-title">Book title</label>
+            <input type="text" name="book-title" id="book-title" />
+          </div>
+
+          <div class="input-container">
+            <label for="book-author">Book author</label>
+            <input type="text" name="book-author" id="book-author" />
+          </div>
+
+          <div class="input-container">
+            <label for="book-pages">Number of Pages</label>
+            <input type="text" name="book-pages" id="book-pages" />
+          </div>
+
+          <div class="input-container">
+            <label for="book-read-state">Have you already read it?</label>
+            <input
+              type="checkbox"
+              name="book-read-state"
+              id="book-read-state"
+            />
+          </div>
+
+          <div class="dialog-buttons">
+            <button class="cancel-button secondary" type="button">
+              Cancel
+            </button>
+            <button class="confirm-button primary" type="button">
+              Confirm
+            </button>
+          </div>
+        </section>
       </dialog>
     </div>
   </body>

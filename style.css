@@ -58,9 +58,16 @@ p {
   margin: 0;
 }
 
+input,
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
 /* Button states */
 button {
   cursor: pointer;
+  font-weight: 700;
 }
 
 .primary,
@@ -192,9 +199,9 @@ main {
   bottom: 12px;
 }
 
-.book-card .cover {
+.cover {
   background-color: var(--book-cover-acent);
-  aspect-ratio: 191 / 242;
+  aspect-ratio: 19 / 25;
   border-radius: 7px;
   display: flex;
   align-items: center;
@@ -202,8 +209,11 @@ main {
 }
 
 i.cover-icon {
-  font-size: 4.5rem;
   color: #ffffffbf;
+}
+
+.book-card i.cover-icon {
+  font-size: 4.5rem;
 }
 
 .book-card .title {
@@ -286,7 +296,6 @@ i.empty-library-icon {
 
 .dialog-boxes {
   position: absolute;
-  width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -303,6 +312,20 @@ i.empty-library-icon {
 /* Dialog 1: Create new book */
 
 #create-book-dialog {
+}
+
+#create-book-dialog .cover {
+  width: 300px;
+}
+
+#create-book-dialog .cover-icon {
+  font-size: 6.5rem;
+}
+
+.confirm-button,
+.cancel-button {
+  width: 120px;
+  height: 50px;
 }
 
 /* Footer */
