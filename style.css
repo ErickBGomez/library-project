@@ -51,6 +51,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  position: relative;
 }
 
 p {
@@ -262,9 +263,9 @@ i.empty-library-icon {
   font-size: 4.2rem;
 }
 
-/* Create book */
+/* Create book button */
 
-.create-book {
+.create-book-button-container {
   position: absolute;
   bottom: 25px;
 }
@@ -279,6 +280,29 @@ i.empty-library-icon {
 
 .create-book-button i {
   font-size: 3.5rem;
+}
+
+/* Dialog boxes */
+
+.dialog-boxes {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-boxes > dialog {
+  background-color: var(--alt-text-color);
+  border: none;
+  border-radius: 16px;
+  padding: 15px;
+}
+
+/* Dialog 1: Create new book */
+
+#create-book-dialog {
 }
 
 /* Footer */
