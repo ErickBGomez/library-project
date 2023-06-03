@@ -11,7 +11,8 @@
   --alt-text-color: #f5f5f5;
   --subtext-color: #ababab;
   --input-background: #e0e0e0;
-  --input-text-color: #636363;
+  --input-text-color: #6b6b6b;
+  --input-error-color: #f15b6f;
 
   /* Other variables */
   --hover-transition: 100ms;
@@ -74,12 +75,29 @@ input {
 }
 
 input[type="text"] {
+  font-weight: 400;
   width: 100%;
   background-color: var(--input-background);
   color: var(--input-text-color);
   border: none;
   border-radius: 7px;
-  padding: 12px;
+  padding: 2px 10px 0 10px;
+  height: 40px;
+  transition: 100ms;
+}
+
+input[type="text"]:not(:placeholder-shown),
+input[type="text"]:focus {
+  outline: none;
+  border-bottom: 6px solid var(--green-accent);
+}
+
+input[type="text"]:focus {
+  box-shadow: 0 0 14px -4px var(--green-accent);
+}
+
+input[type="text"]:invalid {
+  border-bottom: 6px solid var(--input-error-color);
 }
 
 /* Button states */
