@@ -10,6 +10,8 @@
   --text-color: #202020;
   --alt-text-color: #f5f5f5;
   --subtext-color: #ababab;
+  --input-background: #e0e0e0;
+  --input-text-color: #636363;
 
   /* Other variables */
   --hover-transition: 100ms;
@@ -58,10 +60,26 @@ p {
   margin: 0;
 }
 
+/* Inputs */
+
 input,
 button {
   font-family: inherit;
   font-size: inherit;
+}
+
+label,
+input {
+  display: block;
+}
+
+input[type="text"] {
+  width: 100%;
+  background-color: var(--input-background);
+  color: var(--input-text-color);
+  border: none;
+  border-radius: 7px;
+  padding: 12px;
 }
 
 /* Button states */
@@ -331,18 +349,12 @@ i.empty-library-icon {
   width: 300px;
 }
 
-label,
-input {
-  display: block;
-}
-
-input[type="text"] {
-  width: 100%;
-}
-
 .dialog-buttons {
   grid-column: 1 / -1;
   justify-self: end;
+
+  display: flex;
+  gap: 7px;
 }
 
 .confirm-button,
