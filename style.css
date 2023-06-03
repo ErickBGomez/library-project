@@ -306,12 +306,17 @@ i.empty-library-icon {
   background-color: var(--alt-text-color);
   border: none;
   border-radius: 16px;
-  padding: 15px;
+  padding: 30px;
 }
 
 /* Dialog 1: Create new book */
 
 #create-book-dialog {
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  grid-template-rows: repeat(2, min-content);
+  column-gap: 45px;
+  row-gap: 25px;
 }
 
 #create-book-dialog .cover {
@@ -320,6 +325,24 @@ i.empty-library-icon {
 
 #create-book-dialog .cover-icon {
   font-size: 6.5rem;
+}
+
+.inputs-section {
+  width: 300px;
+}
+
+label,
+input {
+  display: block;
+}
+
+input[type="text"] {
+  width: 100%;
+}
+
+.dialog-buttons {
+  grid-column: 1 / -1;
+  justify-self: end;
 }
 
 .confirm-button,
