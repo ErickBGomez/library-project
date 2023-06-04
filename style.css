@@ -394,8 +394,15 @@ i.empty-library-icon {
 
 /* Dialog animations */
 
-dialog {
+.open-dialog {
   animation-name: openDialog;
+  animation-duration: var(--dialog-transition);
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0, 0, 0, 1);
+}
+
+.close-dialog {
+  animation-name: closeDialog;
   animation-duration: var(--dialog-transition);
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0, 0, 0, 1);
@@ -409,6 +416,17 @@ dialog {
   to {
     bottom: 0px;
     opacity: 1;
+  }
+}
+
+@keyframes closeDialog {
+  from {
+    bottom: 0px;
+    opacity: 1;
+  }
+  to {
+    bottom: -200px;
+    opacity: 0;
   }
 }
 
