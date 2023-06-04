@@ -14,10 +14,13 @@ function CloseDialogBox(dialog) {
   dialog.classList.add("close-dialog");
 
   // Wait until animation has finished
-  // And only close when dialog is at closing state
-  dialog.addEventListener("animationend", (e) => {
-    if (e.target.classList.value === "close-dialog") e.target.close();
-  });
+  dialog.addEventListener(
+    "animationend",
+    (e) => {
+      e.target.close();
+    },
+    { once: true }
+  );
 }
 
 createBookButton.addEventListener("click", () =>

@@ -15,9 +15,10 @@
   --input-error-color: #f15b6f;
 
   /* Other variables */
-  --hover-transition: 0.1s;
+  --hover-transition: 100ms;
   --active-transition: 50ms;
-  --dialog-transition: 0.25s;
+  --dialog-open-transition: 250ms;
+  --dialog-close-transition: 175ms;
 }
 
 /* Material Symbols configs */
@@ -409,13 +410,9 @@ i.empty-library-icon {
 
 /* Dialog animations */
 
-::backdrop {
-  opacity: 0;
-}
-
 .open-dialog {
   animation-name: openDialog;
-  animation-duration: var(--dialog-transition);
+  animation-duration: var(--dialog-open-transition);
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0, 0, 0, 1);
 }
@@ -427,14 +424,14 @@ i.empty-library-icon {
 
 .close-dialog {
   animation-name: closeDialog;
-  animation-duration: var(--dialog-transition);
+  animation-duration: var(--dialog-close-transition);
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0, 0, 0, 1);
 }
 
 .close-dialog::backdrop {
   opacity: 0;
-  transition: 0.5s;
+  transition: 175ms;
 }
 
 @keyframes openDialog {
