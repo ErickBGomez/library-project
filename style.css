@@ -15,8 +15,9 @@
   --input-error-color: #f15b6f;
 
   /* Other variables */
-  --hover-transition: 100ms;
+  --hover-transition: 0.1s;
   --active-transition: 50ms;
+  --dialog-transition: 0.5s;
 }
 
 /* Material Symbols configs */
@@ -389,6 +390,26 @@ i.empty-library-icon {
   border: none;
   border-radius: 16px;
   padding: 30px;
+}
+
+/* Dialog animations */
+
+dialog {
+  animation-name: openDialog;
+  animation-duration: var(--dialog-transition);
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0, 0, 0, 1);
+}
+
+@keyframes openDialog {
+  from {
+    bottom: -200px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0px;
+    opacity: 1;
+  }
 }
 
 /* Dialog 1: Create new book */
