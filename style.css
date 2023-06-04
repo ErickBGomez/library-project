@@ -169,6 +169,7 @@ input[type="checkbox"]:checked + .switch .slider {
 /* Button states */
 button {
   cursor: pointer;
+  user-select: none;
 }
 
 .primary,
