@@ -58,8 +58,17 @@ body {
   position: relative;
 }
 
+h1,
+h2,
+h3,
 p {
   margin: 0;
+}
+
+h1 {
+  font-weight: 700;
+  color: var(--text-color);
+  font-size: 1.7rem;
 }
 
 /* Inputs */
@@ -80,7 +89,8 @@ label {
   margin-bottom: 8px;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="tel"] {
   font-weight: 400;
   width: 100%;
   background-color: var(--input-background);
@@ -93,16 +103,20 @@ input[type="text"] {
 }
 
 input[type="text"]:not(:placeholder-shown),
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="tel"]:not(:placeholder-shown),
+input[type="tel"]:focus {
   outline: none;
   border-bottom: 6px solid var(--green-accent);
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="tel"]:focus {
   box-shadow: 0 0 14px -4px var(--green-accent);
 }
 
-input[type="text"]:invalid {
+input[type="text"]:invalid,
+input[type="tel"]:invalid {
   border-bottom: 6px solid var(--input-error-color);
 }
 
@@ -389,7 +403,7 @@ i.empty-library-icon {
   background-color: var(--alt-text-color);
   border: none;
   border-radius: 16px;
-  padding: 30px;
+  padding: 25px 35px;
 }
 
 /* Dialog animations */
@@ -449,9 +463,13 @@ i.empty-library-icon {
 .create-book-grid {
   display: grid;
   grid-template-columns: repeat(2, min-content);
-  grid-template-rows: repeat(2, min-content);
+  grid-template-rows: repeat(3, min-content);
   column-gap: 45px;
   row-gap: 25px;
+}
+
+#create-book-dialog .dialog-title {
+  grid-column: 1 / -1;
 }
 
 #create-book-dialog .cover {
@@ -466,8 +484,8 @@ i.empty-library-icon {
 .inputs-section {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  width: 300px;
+  gap: 20px;
+  width: 250px;
 }
 
 .dialog-buttons {
