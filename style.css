@@ -364,8 +364,8 @@ i.empty-library-icon {
 /* Create book button */
 
 .create-book-button-container {
-  position: absolute;
-  bottom: 25px;
+  position: fixed;
+  bottom: 60px;
 }
 
 .create-book-button {
@@ -383,7 +383,7 @@ i.empty-library-icon {
 /* Dialog boxes */
 
 .dialog-boxes {
-  position: absolute;
+  position: fixed;
   height: 100vh;
   width: 100vw;
   display: flex;

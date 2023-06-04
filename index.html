@@ -59,60 +59,71 @@
     </footer>
 
     <div class="dialog-boxes">
-      <dialog id="create-book-dialog" open>
+      <dialog id="create-book-dialog">
         <section class="cover">
           <div class="cover-image">
             <i class="material-symbols-outlined fill cover-icon">book</i>
           </div>
         </section>
-        <section class="inputs-section">
-          <div class="input-container">
-            <label for="book-title">Book title</label>
-            <input
-              type="text"
-              name="book-title"
-              id="book-title"
-              placeholder=" "
-            />
-          </div>
-
-          <div class="input-container">
-            <label for="book-author">Author's name</label>
-            <input
-              type="text"
-              name="book-author"
-              id="book-author"
-              placeholder=" "
-            />
-          </div>
-
-          <div class="input-container">
-            <label for="book-pages">Number of pages</label>
-            <input
-              type="text"
-              name="book-pages"
-              id="book-pages"
-              placeholder=" "
-            />
-          </div>
-
-          <div class="input-container">
-            <label class="switch-container"
-              >Have you already read it?
+        <form id="create-book-form">
+          <section class="inputs-section">
+            <div class="input-container">
+              <label for="book-title">Book title</label>
               <input
-                type="checkbox"
-                name="book-read-state"
-                id="book-read-state"
+                type="text"
+                name="book-title"
+                id="book-title"
+                placeholder=" "
               />
-              <span class="switch">
-                <span class="slider"></span>
-              </span>
-            </label>
-          </div>
-        </section>
+            </div>
+            <div class="input-container">
+              <label for="book-author">Author's name</label>
+              <input
+                type="text"
+                name="book-author"
+                id="book-author"
+                placeholder=" "
+              />
+            </div>
+            <div class="input-container">
+              <label for="book-pages">Number of pages</label>
+              <input
+                type="text"
+                name="book-pages"
+                id="book-pages"
+                placeholder=" "
+              />
+            </div>
+            <div class="input-container">
+              <label class="switch-container"
+                >Have you already read it?
+                <input
+                  type="checkbox"
+                  name="book-read-state"
+                  id="book-read-state"
+                />
+                <span class="switch">
+                  <span class="slider"></span>
+                </span>
+              </label>
+            </div>
+          </section>
+        </form>
         <section class="dialog-buttons">
-          <button class="cancel-button secondary" type="button">Cancel</button>
-          <button class="confirm-button primary" type="button">Confirm</button>
+          <button
+            class="cancel-button secondary"
+            type="button"
+            form="create-book-form"
+          >
+            Cancel
+          </button>
+          <button
+            class="confirm-button primary"
+            type="button"
+            form="create-book-form"
+          >
+            Confirm
+          </button>
         </section>
       </dialog>
     </div>
