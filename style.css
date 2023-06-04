@@ -13,7 +13,6 @@
   --input-background: #e0e0e0;
   --input-text-color: #6b6b6b;
   --input-error-color: #f15b6f;
-  --dialog-background: #0000006c;
 
   /* Other variables */
   --hover-transition: 100ms;
@@ -380,19 +379,9 @@ i.empty-library-icon {
   font-size: 3.5rem;
 }
 
-/* Dialog boxes */
-
-.dialog-boxes {
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.dialog-boxes.dialog-shown {
-  background-color: var(--dialog-background);
+/* Dialog background */
+::backdrop {
+  background-color: #0000005e;
 }
 
 .dialog-boxes > dialog {
