@@ -105,6 +105,51 @@ input[type="text"]:invalid {
   border-bottom: 6px solid var(--input-error-color);
 }
 
+/* Switch (checkbox) */
+.switch-container {
+  position: relative;
+}
+
+input[type="checkbox"] {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 66px;
+  height: 40px;
+  padding: 7px;
+  border-radius: 2rem;
+  cursor: pointer;
+
+  background-color: var(--input-background);
+  justify-content: start;
+  transition: 100ms;
+}
+
+.slider {
+  display: block;
+  aspect-ratio: 1/1;
+  height: 100%;
+  border-radius: 2rem;
+  background-color: white;
+  transition: 100ms;
+}
+
+input[type="checkbox"]:checked + .switch {
+  background-color: var(--green-accent);
+  transition: 100ms;
+}
+
+input[type="checkbox"]:checked + .switch .slider {
+  transform: translateX(100%);
+  transition: 100ms;
+}
+
 /* Button states */
 button {
   cursor: pointer;
