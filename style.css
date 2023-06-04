@@ -17,7 +17,7 @@
   /* Other variables */
   --hover-transition: 0.1s;
   --active-transition: 50ms;
-  --dialog-transition: 0.5s;
+  --dialog-transition: 0.25s;
 }
 
 /* Material Symbols configs */
@@ -394,6 +394,10 @@ i.empty-library-icon {
 
 /* Dialog animations */
 
+::backdrop {
+  opacity: 0;
+}
+
 .open-dialog {
   animation-name: openDialog;
   animation-duration: var(--dialog-transition);
@@ -401,11 +405,21 @@ i.empty-library-icon {
   animation-timing-function: cubic-bezier(0, 0, 0, 1);
 }
 
+.open-dialog::backdrop {
+  opacity: 1;
+  transition: 0.5s;
+}
+
 .close-dialog {
   animation-name: closeDialog;
   animation-duration: var(--dialog-transition);
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0, 0, 0, 1);
+}
+
+.close-dialog::backdrop {
+  opacity: 0;
+  transition: 0.5s;
 }
 
 @keyframes openDialog {
