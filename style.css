@@ -348,7 +348,7 @@ i.read-icon {
   color: var(--green-accent);
 }
 
-.book-card.read i.read-icon {
+.book-card[data-readState="true"] i.read-icon {
   display: block;
 }
 

@@ -12,48 +12,20 @@ function Book(title, author, pages, readState) {
 }
 
 function CreateBookCard(book) {
-  // Book card container
-  const bookCard = document.createElement("div");
-  bookCard.classList.add("book-card");
+  // User backticks instead of DOM methods to simplify function strucutre
+  const newBookCard = `
+  <div class="book-card" data-readState="${book.readState}">
+    <div class="cover">
+      <i class="material-symbols-outlined fill cover-icon">book</i>
+    </div>
+    <div class="title">${book.title}</div>
+    <div class="author">${book.author}</div>
+    <i class="material-symbols-outlined read-icon">check</i>
+  </div>
+  `;
 
-  // Book cover background and icon
-  const bookCover = document.createElement("div");
-  bookCover.classList.add("cover");
-
-  const bookCoverIcon = document.createElement("i");
-  bookCoverIcon.classList.add("material-symbols-outlined");
-  bookCoverIcon.classList.add("fill");
-  bookCoverIcon.classList.add("cover-icon");
-  bookCoverIcon.textContent = "book";
-
-  bookCover.appendChild(bookCoverIcon);
-
-  // Book title
-  const bookTitle = document.createElement("div");
-  bookTitle.classList.add("title");
-  bookTitle.textContent = book.title;
-
-  // Book author
-  const bookAuthor = document.createElement("div");
-  bookAuthor.classList.add("author");
-  bookAuthor.textContent = book.author;
-
-  // Book read state icon
-  const bookReadStateIcon = document.createElement("i");
-  bookReadStateIcon.classList.add("material-symbols-outlined");
-  bookReadStateIcon.classList.add("read-icon");
-  bookReadStateIcon.textContent = "check";
-
-  if (book.readState) {
-    bookCard.classList.add("read");
-  }
-
-  bookCard.appendChild(bookCover);
-  bookCard.appendChild(bookTitle);
-  bookCard.appendChild(bookAuthor);
-  bookCard.appendChild(bookReadStateIcon);
-
-  booksContainer.appendChild(bookCard);
+  // Insert new book element to booksContainer
+  booksContainer.innerHTML += newBookCard;
 }
 
 function RefreshBooksContainer() {
