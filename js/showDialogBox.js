@@ -20,10 +20,27 @@ function CloseCurrentDialog() {
   );
 }
 
+function RefreshCurrentDialogInputs() {
+  const dialogInputs = dialogBox.currentDialog.querySelectorAll("input");
+
+  dialogInputs.forEach((e) => {
+    // Assign parameter value to avoid eslint: no-param-reassing
+    const input = e;
+
+    if (input.type === "text" || input.type === "tel") {
+      input.value = "";
+    } else if (input.type === "checkbox") {
+      input.checked = false;
+    }
+  });
+}
+
 function OpenDialog(dialog) {
   dialogBox.currentDialog = dialog;
   dialogBox.closeButton =
     dialogBox.currentDialog.querySelector(".cancel-button");
+
+  RefreshCurrentDialogInputs();
 
   dialogBox.currentDialog.className = "open-dialog";
 
