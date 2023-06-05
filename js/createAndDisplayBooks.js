@@ -4,13 +4,6 @@ const books = [];
 const emptyLibraryText = document.querySelector(".empty-library");
 const booksContainer = document.querySelector(".books-container");
 
-const bookTitleInput = document.querySelector("#book-title");
-const bookAuthorInput = document.querySelector("#book-author");
-const bookPagesInput = document.querySelector("#book-pages");
-const bookReadState = document.querySelector("#book-read-state");
-
-const confirmButton = document.querySelector(".confirm-button");
-
 function Book(title, author, pages, readState) {
   this.title = title;
   this.author = author;
@@ -74,22 +67,6 @@ function RefreshBooksContainer() {
     emptyLibraryText.style.display = "block";
   }
 }
-
-function CreateBook(title, author, pages, readState) {
-  books.push(new Book(title, author, pages, readState));
-
-  RefreshBooksContainer();
-  CloseDialogBox(createBookDialog);
-}
-
-confirmButton.addEventListener("click", () =>
-  CreateBook(
-    bookTitleInput.value,
-    bookAuthorInput.value,
-    bookPagesInput.value,
-    bookReadState.value
-  )
-);
 
 books.push(new Book("Dracula", "Bram Stoker", 418, false));
 books.push(new Book("The Divine Comedy", "Dante Alighieri", 304, true));

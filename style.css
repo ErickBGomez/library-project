@@ -397,64 +397,13 @@ i.empty-library-icon {
   font-size: 3.5rem;
 }
 
-/* Dialog background */
-::backdrop {
-  background-color: #0000005e;
-}
+/* Dialog boxes */
 
 .dialog-boxes > dialog {
   background-color: var(--alt-text-color);
   border: none;
   border-radius: 16px;
   padding: 25px 35px;
-}
-
-/* Dialog animations */
-
-.open-dialog {
-  animation-name: openDialog;
-  animation-duration: var(--dialog-open-transition);
-  animation-fill-mode: forwards;
-  animation-timing-function: cubic-bezier(0, 0, 0, 1);
-}
-
-.open-dialog::backdrop {
-  opacity: 1;
-  transition: 0.5s;
-}
-
-.close-dialog {
-  animation-name: closeDialog;
-  animation-duration: var(--dialog-close-transition);
-  animation-fill-mode: forwards;
-  animation-timing-function: cubic-bezier(0, 0, 0, 1);
-}
-
-.close-dialog::backdrop {
-  opacity: 0;
-  transition: 175ms;
-}
-
-@keyframes openDialog {
-  from {
-    bottom: -200px;
-    opacity: 0;
-  }
-  to {
-    bottom: 0px;
-    opacity: 1;
-  }
-}
-
-@keyframes closeDialog {
-  from {
-    bottom: 0px;
-    opacity: 1;
-  }
-  to {
-    bottom: -200px;
-    opacity: 0;
-  }
 }
 
 /* Dialog 1: Create new book */
@@ -499,6 +448,82 @@ i.empty-library-icon {
 .cancel-button {
   width: 120px;
   height: 50px;
+}
+
+/* Dialog animations */
+.open-dialog {
+  animation-name: openDialog;
+  animation-duration: var(--dialog-open-transition);
+}
+
+.close-dialog {
+  animation-name: closeDialog;
+  animation-duration: var(--dialog-close-transition);
+}
+
+.open-dialog,
+.close-dialog {
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0, 0, 0, 1);
+}
+
+/* Dialog background */
+::backdrop {
+  background-color: #0000005b;
+}
+
+.open-dialog::backdrop {
+  animation-name: openDialogBackground;
+}
+
+.close-dialog::backdrop {
+  animation-name: closeDialogBackground;
+}
+
+.open-dialog::backdrop,
+.close-dialog::backdrop {
+  animation-duration: 0.25s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes openDialog {
+  from {
+    bottom: -200px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes closeDialog {
+  from {
+    bottom: 0px;
+    opacity: 1;
+  }
+  to {
+    bottom: -200px;
+    opacity: 0;
+  }
+}
+
+@keyframes openDialogBackground {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes closeDialogBackground {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 /* Footer */
