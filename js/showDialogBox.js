@@ -1,30 +1,42 @@
-const createBookDialog = document.querySelector("#create-book-dialog");
-const createBookButton = document.querySelector(".create-book-button");
-const cancelButton = document.querySelector(".cancel-button");
+const dialogBox = {
+  currentDialog: null,
+  closeButton: null,
+};
 
-function OpenDialogBox(dialog) {
-  dialog.classList.remove("close-dialog");
-  dialog.classList.add("open-dialog");
+const openDialogButtons = document.querySelectorAll("button.open-dialog");
 
-  dialog.showModal();
-}
-
-function CloseDialogBox(dialog) {
-  dialog.classList.remove("open-dialog");
-  dialog.classList.add("close-dialog");
+function CloseCurrentDialog() {
+  dialogBox.currentDialog.className = "close-dialog";
 
   // Wait until animation has finished
-  dialog.addEventListener(
+  dialogBox.currentDialog.addEventListener(
     "animationend",
     (e) => {
       e.target.close();
+      dialogBox.currentDialog = null;
+      dialogBox.closeButton = null;
     },
     { once: true }
   );
 }
 
-createBookButton.addEventListener("click", () =>
-  OpenDialogBox(createBookDialog)
-);
+function OpenDialog(dialog) {
+  dialogBox.currentDialog = dialog;
+  dialogBox.closeButton =
+    dialogBox.currentDialog.querySelector(".cancel-button");
 
-cancelButton.addEventListener("click", () => CloseDialogBox(createBookDialog));
+  dialogBox.currentDialog.className = "open-dialog";
+
+  dialogBox.closeButton.addEventListener("click", CloseCurrentDialog, {
+    once: true,
+  });
+
+  dialog.showModal();
+}
+
+/* Each button that opens a dialog has a data- attribute with the ID of their respective dialog box */
+openDialogButtons.forEach((button) => {
+  const dialog = document.querySelector(`dialog#${button.dataset.dialog}`);
+
+  button.addEventListener("click", () => OpenDialog(dialog));
+});
