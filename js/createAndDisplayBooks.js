@@ -4,6 +4,14 @@ const books = [];
 const emptyLibraryText = document.querySelector(".empty-library");
 const booksContainer = document.querySelector(".books-container");
 const confirmBookButton = document.querySelector(".confirm-button");
+const debugElement = document.querySelector("#debug-element");
+
+const dialogInputs = {
+  title: document.querySelector("#book-title"),
+  author: document.querySelector("#book-author"),
+  pages: document.querySelector("#book-pages"),
+  readState: document.querySelector("#book-read-state"),
+};
 
 function Book(title, author, pages, readState) {
   this.title = title;
@@ -42,17 +50,12 @@ function RefreshBooksContainer() {
 }
 
 function CreateBook() {
-  const inputTitle = document.querySelector("#book-title");
-  const inputAuthor = document.querySelector("#book-author");
-  const inputPages = document.querySelector("#book-pages");
-  const inputReadState = document.querySelector("#book-read-state");
-
   books.push(
     new Book(
-      inputTitle.value,
-      inputAuthor.value,
-      inputPages.value,
-      inputReadState.checked
+      dialogInputs.title.value,
+      dialogInputs.author.value,
+      dialogInputs.pages.value,
+      dialogInputs.readState.checked
     )
   );
 
@@ -71,3 +74,10 @@ books.push(new Book("Luz negra", "Álvaro Menéndez Leal", 130, true));
 confirmBookButton.addEventListener("click", CreateBook);
 
 RefreshBooksContainer();
+
+debugElement.addEventListener("click", () => {
+  dialogInputs.title.value = "Test";
+  dialogInputs.author.value = "Test2";
+  dialogInputs.pages.value = 10;
+  dialogInputs.readState.checked = true;
+});
