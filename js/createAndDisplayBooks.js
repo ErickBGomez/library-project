@@ -3,6 +3,7 @@ const books = [];
 // Select DOM elements
 const emptyLibraryText = document.querySelector(".empty-library");
 const booksContainer = document.querySelector(".books-container");
+const confirmBookButton = document.querySelector(".confirm-button");
 
 function Book(title, author, pages, readState) {
   this.title = title;
@@ -11,7 +12,7 @@ function Book(title, author, pages, readState) {
   this.readState = readState;
 }
 
-function CreateBookCard(book) {
+function InsertBookCard(book) {
   // User backticks instead of DOM methods to simplify function strucutre
   const newBookCard = `
   <div class="book-card" data-readState="${book.readState}">
@@ -34,10 +35,29 @@ function RefreshBooksContainer() {
   if (books.length) {
     emptyLibraryText.style.display = "none";
 
-    books.forEach((book) => CreateBookCard(book));
+    books.forEach((book) => InsertBookCard(book));
   } else {
     emptyLibraryText.style.display = "block";
   }
+}
+
+function CreateBook() {
+  const inputTitle = document.querySelector("#book-title");
+  const inputAuthor = document.querySelector("#book-author");
+  const inputPages = document.querySelector("#book-pages");
+  const inputReadState = document.querySelector("#book-read-state");
+
+  books.push(
+    new Book(
+      inputTitle.value,
+      inputAuthor.value,
+      inputPages.value,
+      inputReadState.checked
+    )
+  );
+
+  InsertBookCard(books[books.length - 1]);
+  RefreshBooksContainer();
 }
 
 books.push(new Book("Dracula", "Bram Stoker", 418, false));
@@ -47,5 +67,7 @@ books.push(
 );
 books.push(new Book("Don Quixote", "Miguel de Cervantes", 462, true));
 books.push(new Book("Luz negra", "Álvaro Menéndez Leal", 130, true));
+
+confirmBookButton.addEventListener("click", CreateBook);
 
 RefreshBooksContainer();
