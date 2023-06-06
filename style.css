@@ -451,18 +451,18 @@ i.empty-library-icon {
 }
 
 /* Dialog animations */
-.open-dialog {
+dialog.open-dialog {
   animation-name: openDialog;
   animation-duration: var(--dialog-open-transition);
 }
 
-.close-dialog {
+dialog.close-dialog {
   animation-name: closeDialog;
   animation-duration: var(--dialog-close-transition);
 }
 
-.open-dialog,
-.close-dialog {
+dialog.open-dialog,
+dialog.close-dialog {
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0, 0, 0, 1);
 }
@@ -472,16 +472,16 @@ i.empty-library-icon {
   background-color: #0000005b;
 }
 
-.open-dialog::backdrop {
+dialog.open-dialog::backdrop {
   animation-name: openDialogBackground;
 }
 
-.close-dialog::backdrop {
+dialog.close-dialog::backdrop {
   animation-name: closeDialogBackground;
 }
 
-.open-dialog::backdrop,
-.close-dialog::backdrop {
+dialog.open-dialog::backdrop,
+dialog.close-dialog::backdrop {
   animation-duration: 0.25s;
   animation-fill-mode: forwards;
 }
