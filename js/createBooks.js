@@ -1,3 +1,5 @@
+import CloseCurrentDialog from "./showDialogBox.js";
+
 const books = [];
 
 // Select DOM elements
@@ -91,8 +93,8 @@ confirmBookButton.addEventListener("click", ValidateBookInputs);
 RefreshBooksContainer();
 
 debugElement.addEventListener("click", () => {
-  createBookDialog.inputs.inputTitle.value = "Test";
-  createBookDialog.inputs.inputAuthor.value = "Test2";
+  createBookDialog.inputs.title.value = "Test";
+  createBookDialog.inputs.author.value = "Test2";
   createBookDialog.inputs.pages.value = 10;
   createBookDialog.inputs.readState.checked = true;
 });

@@ -5,7 +5,7 @@ const dialogBox = {
 
 const openDialogButtons = document.querySelectorAll("button.open-dialog");
 
-function CloseCurrentDialog() {
+export default function CloseCurrentDialog() {
   dialogBox.currentDialog.className = "close-dialog";
 
   // Wait until animation has finished
