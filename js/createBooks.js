@@ -1,4 +1,4 @@
-import CloseCurrentDialog from "./showDialogBox.js";
+import CloseCurrentDialog from "./modalDialogs.js";
 
 const books = [];
 
@@ -26,7 +26,7 @@ function Book(title, author, pages, readState) {
 }
 
 function InsertBookCard(book) {
-  // User backticks instead of DOM methods to simplify function strucutre
+  // User backticks instead of DOM methods to simplify function structure
   const newBookCard = `
   <div class="book-card" data-readState="${book.readState}">
     <div class="cover">
@@ -74,9 +74,12 @@ function ValidateBookInputs() {
     createBookDialog.inputs.author &&
     createBookDialog.inputs.pages
   ) {
+    console.log(createBookDialog.inputs.title);
+    console.log(createBookDialog.inputs.author);
     CreateBook();
-    // Resolve eslint(no-undef)
     CloseCurrentDialog();
+  } else {
+    alert("Empty inputs");
   }
 }
 
