@@ -1,20 +1,12 @@
+import createBookDialog from "./modalDialogs.js";
+
 const books = [];
 
 // Select DOM elements
 const emptyLibraryText = document.querySelector(".empty-library");
 const booksContainer = document.querySelector(".books-container");
-const confirmBookButton = document.querySelector(".confirm-button");
+const createBookButton = document.querySelector(".create-book-button");
 const debugElement = document.querySelector("#debug-element");
-
-const createBookDialog = {
-  dialogModal: document.querySelector("#create-book-dialog"),
-  inputs: {
-    title: document.querySelector("#book-title"),
-    author: document.querySelector("#book-author"),
-    pages: document.querySelector("#book-pages"),
-    readState: document.querySelector("#book-read-state"),
-  },
-};
 
 function Book(title, author, pages, readState) {
   this.title = title;
@@ -66,21 +58,6 @@ function CreateBook() {
   RefreshBooksContainer();
 }
 
-function ValidateBookInputs() {
-  if (
-    createBookDialog.inputs.title &&
-    createBookDialog.inputs.author &&
-    createBookDialog.inputs.pages
-  ) {
-    console.log(createBookDialog.inputs.title);
-    console.log(createBookDialog.inputs.author);
-    CreateBook();
-    CloseCurrentDialog();
-  } else {
-    alert("Empty inputs");
-  }
-}
-
 books.push(new Book("Dracula", "Bram Stoker", 418, false));
 books.push(new Book("The Divine Comedy", "Dante Alighieri", 304, true));
 books.push(
@@ -89,13 +66,8 @@ books.push(
 books.push(new Book("Don Quixote", "Miguel de Cervantes", 462, true));
 books.push(new Book("Luz negra", "Álvaro Menéndez Leal", 130, true));
 
-confirmBookButton.addEventListener("click", ValidateBookInputs);
-
 RefreshBooksContainer();
 
-debugElement.addEventListener("click", () => {
-  createBookDialog.inputs.title.value = "Test";
-  createBookDialog.inputs.author.value = "Test2";
-  createBookDialog.inputs.pages.value = 10;
-  createBookDialog.inputs.readState.checked = true;
-});
+createBookButton.addEventListener("click", () =>
+  createBookDialog.modal.showModal()
+);

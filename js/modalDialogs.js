@@ -11,6 +11,12 @@ const createBookDialog = {
   inputs: Array.from(
     document.querySelectorAll("dialog#create-book-dialog input")
   ),
+  nextDialog: null,
+  previousDialog: null,
 };
 
-// createBookDialog.modal.showModal();
+createBookDialog.buttons.cancel.addEventListener("click", () =>
+  createBookDialog.modal.close()
+);
+
+export default createBookDialog;
