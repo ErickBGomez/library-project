@@ -18,7 +18,7 @@
   --hover-transition: 100ms;
   --active-transition: 50ms;
   --dialog-open-transition: 250ms;
-  --dialog-close-transition: 175ms;
+  --dialog-close-transition: 250ms;
 }
 
 /* Material Symbols configs */
@@ -451,37 +451,23 @@ i.empty-library-icon {
 }
 
 /* Dialog animations */
-dialog.open-dialog {
+
+dialog[open] {
   animation-name: openDialog;
   animation-duration: var(--dialog-open-transition);
-}
-
-dialog.close-dialog {
-  animation-name: closeDialog;
-  animation-duration: var(--dialog-close-transition);
-}
-
-dialog.open-dialog,
-dialog.close-dialog {
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0, 0, 0, 1);
 }
 
 /* Dialog background */
+
 ::backdrop {
   background-color: #0000005b;
 }
 
-dialog.open-dialog::backdrop {
+dialog[open]::backdrop {
   animation-name: openDialogBackground;
-}
 
-dialog.close-dialog::backdrop {
-  animation-name: closeDialogBackground;
-}
-
-dialog.open-dialog::backdrop,
-dialog.close-dialog::backdrop {
   animation-duration: 0.25s;
   animation-fill-mode: forwards;
 }
@@ -489,22 +475,11 @@ dialog.close-dialog::backdrop {
 @keyframes openDialog {
   from {
     bottom: -200px;
-    opacity: 0;
+    opacity: 0.5;
   }
   to {
     bottom: 0px;
     opacity: 1;
-  }
-}
-
-@keyframes closeDialog {
-  from {
-    bottom: 0px;
-    opacity: 1;
-  }
-  to {
-    bottom: -200px;
-    opacity: 0;
   }
 }
 
@@ -514,15 +489,6 @@ dialog.close-dialog::backdrop {
   }
   to {
     opacity: 1;
-  }
-}
-
-@keyframes closeDialogBackground {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
   }
 }
 

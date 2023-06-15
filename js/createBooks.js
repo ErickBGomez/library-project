@@ -1,5 +1,3 @@
-import CloseCurrentDialog from "./modalDialogs.js";
-
 const books = [];
 
 // Select DOM elements
