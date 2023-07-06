@@ -1,3 +1,5 @@
+import { createBook } from "./dialogs.js";
+
 const books = [];
 
 const emptyLibraryText = document.querySelector(".empty-library");
@@ -47,3 +49,22 @@ function CreateBook(title, author, pages, readState) {
 }
 
 RefreshBooksContainer();
+
+// Events
+createBook.confirm.addEventListener("click", () => {
+  const inputs = {
+    title: createBook.modal.querySelector("input#book-title"),
+    author: createBook.modal.querySelector("input#book-author"),
+    pages: createBook.modal.querySelector("input#book-pages"),
+    readState: createBook.modal.querySelector("input#book-read-state"),
+  };
+
+  console.log(inputs);
+
+  CreateBook(
+    inputs.title.value,
+    inputs.author.value,
+    inputs.pages.value,
+    inputs.readState.checked
+  );
+});

@@ -1,9 +1,7 @@
 // Dialogs
-const createBook = document.querySelector("#create-book-dialog");
 
-// Buttons to invoke dialogs
-// 1. Buttons for create book
-const createBookBtns = {
+export const createBook = {
+  modal: document.querySelector("#create-book-dialog"),
   invoke: document.querySelector(".create-book-button"),
   cancel: document.querySelector("#create-book-dialog .cancel-button"),
   confirm: document.querySelector("#create-book-dialog .confirm-button"),
@@ -27,8 +25,8 @@ function InvokeModal(dialogModal, containsInput) {
 }
 
 // Create book events
-createBookBtns.invoke.addEventListener("click", () =>
-  InvokeModal(createBook, true)
+createBook.invoke.addEventListener("click", () =>
+  InvokeModal(createBook.modal, true)
 );
-createBookBtns.cancel.addEventListener("click", () => createBook.close());
-createBookBtns.confirm.addEventListener("click", () => createBook.close());
+createBook.cancel.addEventListener("click", () => createBook.modal.close());
+createBook.confirm.addEventListener("click", () => createBook.modal.close());
