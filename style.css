@@ -408,7 +408,7 @@ i.empty-library-icon {
 
 /* Dialog 1: Create new book */
 
-.create-book-grid {
+#create-book-dialog[open] {
   display: grid;
   grid-template-columns: repeat(2, min-content);
   grid-template-rows: repeat(3, min-content);
