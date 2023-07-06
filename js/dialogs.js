@@ -10,12 +10,9 @@ const createBookBtns = {
 };
 
 // Functions
-
-let inputsArray;
-
 function InvokeModal(dialogModal, containsInput) {
   if (containsInput) {
-    inputsArray = dialogModal.querySelectorAll("input");
+    const inputsArray = dialogModal.querySelectorAll("input");
 
     inputsArray.forEach((e) => {
       // Avoid eslint(no-param-reassign)
