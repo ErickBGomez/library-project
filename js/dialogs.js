@@ -2,7 +2,6 @@
 const createBook = document.querySelector("#create-book-dialog");
 
 // Buttons to invoke dialogs
-
 // 1. Buttons for create book
 const createBookBtns = {
   invoke: document.querySelector(".create-book-button"),
@@ -10,7 +9,29 @@ const createBookBtns = {
   confirm: document.querySelector("#create-book-dialog .confirm-button"),
 };
 
+// Functions
+
+let inputsArray;
+
+function InvokeModal(dialogModal, containsInput) {
+  if (containsInput) {
+    inputsArray = dialogModal.querySelectorAll("input");
+
+    inputsArray.forEach((e) => {
+      // Avoid eslint(no-param-reassign)
+      const input = e;
+
+      input.value = "";
+      input.checked = false;
+    });
+  }
+
+  dialogModal.showModal();
+}
+
 // Create book events
-createBookBtns.invoke.addEventListener("click", () => createBook.showModal());
+createBookBtns.invoke.addEventListener("click", () =>
+  InvokeModal(createBook, true)
+);
 createBookBtns.cancel.addEventListener("click", () => createBook.close());
 createBookBtns.confirm.addEventListener("click", () => createBook.close());
