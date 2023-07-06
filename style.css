@@ -432,8 +432,25 @@ i.empty-library-icon {
 .inputs-section {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
   width: 250px;
+}
+
+.input-container {
+  position: relative;
+}
+
+.validation-msg {
+  display: none;
+  font-weight: 500;
+  color: var(--input-error-color);
+  position: absolute;
+  bottom: -18px;
+  font-size: 0.8rem;
+}
+
+input:invalid + .validation-msg {
+  display: block;
 }
 
 .dialog-buttons {
