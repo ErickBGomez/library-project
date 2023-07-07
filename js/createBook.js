@@ -51,7 +51,7 @@ function CreateBook(title, author, pages, readState) {
 RefreshBooksContainer();
 
 // Events
-createBook.confirm.addEventListener("click", () => {
+createBook.modal.addEventListener("submit", () => {
   const inputs = {
     title: createBook.modal.querySelector("input#book-title"),
     author: createBook.modal.querySelector("input#book-author"),

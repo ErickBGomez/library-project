@@ -1,13 +1,13 @@
-function ValidateInput() {
-  if (this.value) {
-    this.setCustomValidity("");
-  } else {
-    this.setCustomValidity("Required field!");
-  }
+import { createBook } from "./dialogs.js";
 
-  console.log("a");
+function ValidateInput(e) {
+  if (e.target.value) {
+    e.target.setCustomValidity("");
+  } else {
+    e.target.setCustomValidity("Required field!");
+  }
 }
 
-const input = document.querySelector("input#book-title");
-
-input.addEventListener("input", ValidateInput);
+createBook.inputs.title.addEventListener("input", ValidateInput);
+createBook.inputs.author.addEventListener("input", ValidateInput);
+createBook.inputs.pages.addEventListener("input", ValidateInput);
