@@ -44,7 +44,6 @@ function RefreshBooksContainer() {
 function CreateBook(title, author, pages, readState) {
   books.push(new Book(title, author, pages, readState));
 
-  InsertBookCard(books[books.length - 1]);
   RefreshBooksContainer();
 }
 
@@ -52,19 +51,10 @@ RefreshBooksContainer();
 
 // Events
 createBook.modal.addEventListener("submit", () => {
-  const inputs = {
-    title: createBook.modal.querySelector("input#book-title"),
-    author: createBook.modal.querySelector("input#book-author"),
-    pages: createBook.modal.querySelector("input#book-pages"),
-    readState: createBook.modal.querySelector("input#book-read-state"),
-  };
-
-  console.log(inputs);
-
   CreateBook(
-    inputs.title.value,
-    inputs.author.value,
-    inputs.pages.value,
-    inputs.readState.checked
+    createBook.inputs.title.value,
+    createBook.inputs.author.value,
+    createBook.inputs.pages.value,
+    createBook.inputs.readState.checked
   );
 });
