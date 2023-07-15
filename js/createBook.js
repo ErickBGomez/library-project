@@ -1,5 +1,3 @@
-import { createBook } from "./dialogs.js";
-
 const books = [];
 
 const emptyLibraryText = document.querySelector(".empty-library");
@@ -41,20 +39,10 @@ function RefreshBooksContainer() {
   }
 }
 
-function CreateBook(title, author, pages, readState) {
+export function InitializeBook(title, author, pages, readState) {
   books.push(new Book(title, author, pages, readState));
 
   RefreshBooksContainer();
 }
 
 RefreshBooksContainer();
-
-// Events
-// createBook.modal.addEventListener("submit", () => {
-//   CreateBook(
-//     createBook.inputs.title.value,
-//     createBook.inputs.author.value,
-//     createBook.inputs.pages.value,
-//     createBook.inputs.readState.checked
-//   );
-// });

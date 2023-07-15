@@ -1,4 +1,5 @@
 import { createBook } from "./dialogs.js";
+import { InitializeBook } from "./createBook.js";
 
 const form = document.querySelector("form#book-form");
 
@@ -29,7 +30,16 @@ function CustomSubmit(e) {
   }
 
   // Submit
-  if (!invalidInputs) e.target.submit();
+  if (!invalidInputs) {
+    InitializeBook(
+      createBook.inputs.title.value,
+      createBook.inputs.author.value,
+      createBook.inputs.pages.value,
+      createBook.inputs.readState.checked
+    );
+
+    e.target.submit();
+  }
 }
 
 // Add event to every input
