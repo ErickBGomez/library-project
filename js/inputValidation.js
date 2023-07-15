@@ -32,4 +32,15 @@ function CustomSubmit(e) {
   if (!invalidInputs) e.target.submit();
 }
 
+// Add event to every input
+for (const input in createBook.inputs) {
+  const currentInput = createBook.inputs[input];
+
+  if (currentInput.type !== "checkbox") {
+    currentInput.addEventListener("input", () => {
+      ValidateInput(currentInput);
+    });
+  }
+}
+
 form.addEventListener("submit", CustomSubmit);
