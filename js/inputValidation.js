@@ -3,10 +3,12 @@ import { createBook } from "./dialogs.js";
 const form = document.querySelector("form#book-form");
 
 function ValidateInput(input) {
+  if (input.type === "checkbox") return;
+
   if (input.value) {
     input.dataset.state = "valid";
     return null;
-  } else if (input.type !== "checkbox") {
+  } else {
     input.dataset.state = "invalid";
     return input;
   }
@@ -18,7 +20,7 @@ function CustomSubmit(e) {
   // Count invalid inputs
   let invalidInputs = 0;
 
-  for (let input in createBook.inputs) {
+  for (const input in createBook.inputs) {
     const currentInput = createBook.inputs[input];
 
     ValidateInput(currentInput);
@@ -28,6 +30,7 @@ function CustomSubmit(e) {
     }
   }
 
+  // Submit
   if (!invalidInputs) e.target.submit();
 }
 

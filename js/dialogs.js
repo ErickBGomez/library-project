@@ -20,15 +20,16 @@ export const createBook = {
 // Functions
 function ClearInputs(dialogModal) {
   if ("inputs" in dialogModal) {
-    const inputsArray = dialogModal.modal.querySelectorAll("input");
+    const inputsArray = Array.from(dialogModal.modal.querySelectorAll("input"));
 
-    inputsArray.forEach((e) => {
-      // Avoid eslint(no-param-reassign)
-      const input = e;
-
-      input.value = "";
-      input.checked = false;
-    });
+    for (const input of inputsArray) {
+      if (input.type !== "checkbox") {
+        input.value = "";
+        input.dataset.state = "valid";
+      } else {
+        input.checked = false;
+      }
+    }
   }
 }
 
@@ -45,5 +46,5 @@ createBook.buttons.invoke.addEventListener("click", () =>
 createBook.buttons.cancel.addEventListener("click", () =>
   createBook.modal.close()
 );
-// createBook.modal.addEventListener("submit", () => createBook.modal.close());
+
 createBook.modal.addEventListener("close", () => ClearInputs(createBook));
