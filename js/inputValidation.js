@@ -2,30 +2,33 @@ import { createBook } from "./dialogs.js";
 
 const form = document.querySelector("form#book-form");
 
-function ValidateInput(e) {
-  if (e.target.value) {
-    e.target.setCustomValidity("");
-  } else {
-    e.target.setCustomValidity("Required field!");
+function ValidateInput(input) {
+  if (input.value) {
+    input.dataset.state = "valid";
+    return null;
+  } else if (input.type !== "checkbox") {
+    input.dataset.state = "invalid";
+    return input;
   }
 }
 
-function ValidateInputs(formElement) {
-  const formInputs = formElement.querySelectorAll("input");
-
-  for (const key in object) {
-    if (Object.hasOwnProperty.call(object, key)) {
-      const element = object[key];
-    }
-  }
-}
-
-createBook.inputs.title.addEventListener("input", ValidateInput);
-createBook.inputs.author.addEventListener("input", ValidateInput);
-createBook.inputs.pages.addEventListener("input", ValidateInput);
-
-form.onsubmit = (e) => {
+function CustomSubmit(e) {
   e.preventDefault();
 
-  console.log("hola");
-};
+  // Count invalid inputs
+  let invalidInputs = 0;
+
+  for (let input in createBook.inputs) {
+    const currentInput = createBook.inputs[input];
+
+    ValidateInput(currentInput);
+
+    if (currentInput.dataset.state === "invalid") {
+      invalidInputs++;
+    }
+  }
+
+  if (!invalidInputs) e.target.submit();
+}
+
+form.addEventListener("submit", CustomSubmit);

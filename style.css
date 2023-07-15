@@ -116,8 +116,8 @@ input[type="tel"]:focus {
   box-shadow: 0 0 14px -4px var(--green-accent);
 }
 
-input[type="text"]:invalid,
-input[type="tel"]:invalid {
+input[type="text"][data-state="invalid"],
+input[type="tel"][data-state="invalid"] {
   border-bottom: 6px solid var(--input-error-color);
 }
 
@@ -449,7 +449,7 @@ i.empty-library-icon {
   font-size: 0.8rem;
 }
 
-input:invalid + .validation-msg {
+input[data-state="invalid"] + .validation-msg {
   display: block;
 }
 
