@@ -7,10 +7,8 @@ function ValidateInput(input) {
 
   if (input.value) {
     input.dataset.state = "valid";
-    return null;
   } else {
     input.dataset.state = "invalid";
-    return input;
   }
 }
 
