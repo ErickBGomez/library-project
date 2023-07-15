@@ -406,6 +406,47 @@ i.empty-library-icon {
   padding: 25px 35px;
 }
 
+/* Dialog animations */
+
+dialog[open] {
+  animation-name: openDialog;
+  animation-duration: var(--dialog-open-transition);
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0, 0, 0, 1);
+}
+
+/* Dialog background */
+
+::backdrop {
+  background-color: #0000005b;
+}
+
+dialog[open]::backdrop {
+  animation-name: openDialogBackground;
+  animation-duration: 0.25s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes openDialog {
+  from {
+    bottom: -200px;
+    opacity: 0.5;
+  }
+  to {
+    bottom: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes openDialogBackground {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* Dialog 1: Create new book */
 
 #create-book-dialog[open] {
@@ -465,48 +506,6 @@ input[data-state="invalid"] + .validation-msg {
 .cancel-button {
   width: 120px;
   height: 50px;
-}
-
-/* Dialog animations */
-
-dialog[open] {
-  animation-name: openDialog;
-  animation-duration: var(--dialog-open-transition);
-  animation-fill-mode: forwards;
-  animation-timing-function: cubic-bezier(0, 0, 0, 1);
-}
-
-/* Dialog background */
-
-::backdrop {
-  background-color: #0000005b;
-}
-
-dialog[open]::backdrop {
-  animation-name: openDialogBackground;
-
-  animation-duration: 0.25s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes openDialog {
-  from {
-    bottom: -200px;
-    opacity: 0.5;
-  }
-  to {
-    bottom: 0px;
-    opacity: 1;
-  }
-}
-
-@keyframes openDialogBackground {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 /* Footer */
