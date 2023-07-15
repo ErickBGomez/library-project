@@ -1,19 +1,25 @@
+import { openBook, InvokeModal } from "./dialogs.js";
+
 const books = [];
+let bookIdCounter = 0;
 
 const emptyLibraryText = document.querySelector(".empty-library");
 const booksContainer = document.querySelector(".books-container");
 
 function Book(title, author, pages, readState) {
+  this.id = `book-${bookIdCounter}`;
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.readState = readState;
+
+  bookIdCounter++;
 }
 
 function InsertBookCard(book) {
   // User backticks instead of DOM methods to simplify function structure
   const newBookCard = `
-  <div class="book-card" data-readState="${book.readState}">
+  <div class="book-card" data-readState="${book.readState}" data-bookId="${book.id}">
     <div class="cover">
       <i class="material-symbols-outlined fill cover-icon">book</i>
     </div>
@@ -27,22 +33,37 @@ function InsertBookCard(book) {
   booksContainer.innerHTML += newBookCard;
 }
 
-function RefreshBooksContainer() {
-  booksContainer.innerHTML = "";
-
+function CheckEmptyContainer() {
   if (books.length) {
     emptyLibraryText.style.display = "none";
-
-    books.forEach((book) => InsertBookCard(book));
   } else {
     emptyLibraryText.style.display = "block";
   }
 }
 
 export function InitializeBook(title, author, pages, readState) {
-  books.push(new Book(title, author, pages, readState));
+  console.log(bookIdCounter);
+  const newBook = new Book(title, author, pages, readState);
 
-  RefreshBooksContainer();
+  books.push(newBook);
+  InsertBookCard(newBook);
+
+  const bookElement = document.querySelector(
+    `div[data-bookId="${newBook.id}"]`
+  );
+
+  bookElement.addEventListener("click", () => {
+    console.log("hola");
+
+    InvokeModal(openBook);
+  });
 }
 
-RefreshBooksContainer();
+// Testing: Start program with pre-prefined books
+InitializeBook("Dracula", "Bram Stoker", 418, false);
+InitializeBook("The Divine Comedy", "Dante Alighieri", 304, true);
+InitializeBook("The Little Prince", "Antoine de Saint-Exupéry", 96, false);
+InitializeBook("Don Quixote", "Miguel de Cervantes", 462, true);
+InitializeBook("Luz negra", "Álvaro Menéndez Leal", 130, true);
+
+CheckEmptyContainer();

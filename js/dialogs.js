@@ -17,10 +17,16 @@ export const createBook = {
   },
 };
 
+export const openBook = {
+  modal: document.querySelector("#open-book-dialog"),
+};
+
 // Functions
-function ClearInputs(dialogModal) {
-  if ("inputs" in dialogModal) {
-    const inputsArray = Array.from(dialogModal.modal.querySelectorAll("input"));
+function ClearInputs(dialogObject) {
+  if ("inputs" in dialogObject) {
+    const inputsArray = Array.from(
+      dialogObject.modal.querySelectorAll("input")
+    );
 
     for (const input of inputsArray) {
       if (input.type !== "checkbox") {
@@ -33,10 +39,10 @@ function ClearInputs(dialogModal) {
   }
 }
 
-function InvokeModal(dialogModal) {
-  ClearInputs(dialogModal);
+export function InvokeModal(dialogObject) {
+  ClearInputs(dialogObject);
 
-  dialogModal.modal.showModal();
+  dialogObject.modal.showModal();
 }
 
 // Create book events
