@@ -50,11 +50,11 @@ function CreateBook(title, author, pages, readState) {
 RefreshBooksContainer();
 
 // Events
-createBook.modal.addEventListener("submit", () => {
-  CreateBook(
-    createBook.inputs.title.value,
-    createBook.inputs.author.value,
-    createBook.inputs.pages.value,
-    createBook.inputs.readState.checked
-  );
-});
+// createBook.modal.addEventListener("submit", () => {
+//   CreateBook(
+//     createBook.inputs.title.value,
+//     createBook.inputs.author.value,
+//     createBook.inputs.pages.value,
+//     createBook.inputs.readState.checked
+//   );
+// });

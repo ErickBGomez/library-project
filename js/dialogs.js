@@ -45,5 +45,5 @@ createBook.buttons.invoke.addEventListener("click", () =>
 createBook.buttons.cancel.addEventListener("click", () =>
   createBook.modal.close()
 );
-createBook.modal.addEventListener("submit", () => createBook.modal.close());
+// createBook.modal.addEventListener("submit", () => createBook.modal.close());
 createBook.modal.addEventListener("close", () => ClearInputs(createBook));
