@@ -18,6 +18,7 @@ export const createBook = {
 };
 
 export const bookInfo = {
+  currentBook: null,
   modal: document.querySelector("#book-info-dialog"),
   buttons: {
     cancel: document.querySelector("#book-info-dialog .cancel-button"),
@@ -66,6 +67,7 @@ export function InvokeModal(dialogObject) {
 }
 
 export function InvokeBookInfo(book) {
+  bookInfo.currentBook = book;
   bookInfo.elements.title.innerText = book.title;
   bookInfo.elements.author.innerText = book.author;
   bookInfo.elements.pages.innerText = `${book.pages} pages`;
@@ -74,6 +76,13 @@ export function InvokeBookInfo(book) {
     : "Not read yet";
 
   InvokeModal(bookInfo);
+}
+
+export function InvokeDeleteBook(book) {
+  deleteBook.elements.title.innerText = book.title;
+  deleteBook.elements.author.innerText = book.author;
+
+  InvokeModal(deleteBook);
 }
 
 // Create book events
@@ -92,6 +101,6 @@ bookInfo.buttons.cancel.addEventListener("click", () => bookInfo.modal.close());
 deleteBook.buttons.cancel.addEventListener("click", () =>
   deleteBook.modal.close()
 );
-deleteBook.buttons.invoke.addEventListener("click", () =>
-  InvokeModal(deleteBook)
-);
+deleteBook.buttons.invoke.addEventListener("click", () => {
+  InvokeDeleteBook(bookInfo.currentBook);
+});
