@@ -1,25 +1,22 @@
-import { bookInfo, InvokeModal } from "./dialogs.js";
+import { bookInfo, InvokeModal, InvokeBookInfo } from "./dialogs.js";
 
 const books = [];
-let bookIdCounter = 0;
+let bookCards = [];
 
 const emptyLibraryText = document.querySelector(".empty-library");
 const booksContainer = document.querySelector(".books-container");
 
 function Book(title, author, pages, readState) {
-  this.id = `book-${bookIdCounter}`;
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.readState = readState;
-
-  bookIdCounter++;
 }
 
 function InsertBookCard(book) {
   // User backticks instead of DOM methods to simplify function structure
   const newBookCard = `
-  <div class="book-card" data-readState="${book.readState}" data-bookId="${book.id}">
+  <div class="book-card" data-readState="${book.readState}">
     <div class="cover">
       <i class="material-symbols-outlined fill cover-icon">book</i>
     </div>
@@ -34,35 +31,37 @@ function InsertBookCard(book) {
 }
 
 function RefreshBookContainer() {
+  booksContainer.innerHTML = "";
+
   if (books.length) {
     emptyLibraryText.style.display = "none";
+
+    books.forEach((book) => {
+      InsertBookCard(book);
+    });
+
+    bookCards = document.querySelectorAll(".book-card");
+
+    bookCards.forEach((bookCard, index) => {
+      bookCard.addEventListener("click", () => InvokeBookInfo(books[index]));
+    });
   } else {
     emptyLibraryText.style.display = "block";
   }
 }
 
-function AddBookInfoEvent() {
-  booksContainer.childNodes.forEach((node) =>
-    node.addEventListener("click", () => InvokeModal(bookInfo))
-  );
-}
-
-export function InitializeBook(title, author, pages, readState) {
+export function AddNewBook(title, author, pages, readState) {
   const newBook = new Book(title, author, pages, readState);
-
   books.push(newBook);
-  InsertBookCard(newBook);
 
   RefreshBookContainer();
-
-  AddBookInfoEvent();
 }
 
 // Testing: Start program with pre-prefined books
-InitializeBook("Dracula", "Bram Stoker", 418, false);
-InitializeBook("The Divine Comedy", "Dante Alighieri", 304, true);
-InitializeBook("The Little Prince", "Antoine de Saint-Exupéry", 96, false);
-InitializeBook("Don Quixote", "Miguel de Cervantes", 462, true);
-InitializeBook("Luz negra", "Álvaro Menéndez Leal", 130, true);
+AddNewBook("Dracula", "Bram Stoker", 418, false);
+AddNewBook("The Divine Comedy", "Dante Alighieri", 304, true);
+AddNewBook("The Little Prince", "Antoine de Saint-Exupéry", 96, false);
+AddNewBook("Don Quixote", "Miguel de Cervantes", 462, true);
+AddNewBook("Luz negra", "Álvaro Menéndez Leal", 130, true);
 
 RefreshBookContainer();

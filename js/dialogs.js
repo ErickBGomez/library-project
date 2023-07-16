@@ -22,6 +22,12 @@ export const bookInfo = {
   buttons: {
     cancel: document.querySelector("#book-info-dialog .cancel-button"),
   },
+  elements: {
+    title: document.querySelector("#book-info-dialog .title"),
+    author: document.querySelector("#book-info-dialog .author"),
+    pages: document.querySelector("#book-info-dialog .pages"),
+    readState: document.querySelector("#book-info-dialog .read-state"),
+  },
 };
 
 // Functions
@@ -46,6 +52,16 @@ export function InvokeModal(dialogObject) {
   ClearInputs(dialogObject);
 
   dialogObject.modal.showModal();
+}
+
+// Improve here and add pages and readstate strings
+export function InvokeBookInfo(book) {
+  bookInfo.elements.title.innerText = book.title;
+  bookInfo.elements.author.innerText = book.author;
+  bookInfo.elements.pages.innerText = book.pages;
+  bookInfo.elements.readState.innerText = book.readState;
+
+  InvokeModal(bookInfo);
 }
 
 // Create book events

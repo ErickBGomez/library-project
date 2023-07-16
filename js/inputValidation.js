@@ -1,5 +1,5 @@
 import { createBook } from "./dialogs.js";
-import { InitializeBook } from "./createBook.js";
+import { AddNewBook } from "./createBook.js";
 
 const form = document.querySelector("form#book-form");
 
@@ -31,7 +31,7 @@ function CustomSubmit(e) {
 
   // Submit
   if (!invalidInputs) {
-    InitializeBook(
+    AddNewBook(
       createBook.inputs.title.value,
       createBook.inputs.author.value,
       createBook.inputs.pages.value,
