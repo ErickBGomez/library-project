@@ -57,7 +57,7 @@ export function AddNewBook(title, author, pages, readState) {
   RefreshBookContainer();
 }
 
-// Testing: Start program with pre-prefined books
+// Testing: Start program with pre-predefined books
 AddNewBook("Dracula", "Bram Stoker", 418, false);
 AddNewBook("The Divine Comedy", "Dante Alighieri", 304, true);
 AddNewBook("The Little Prince", "Antoine de Saint-Exupéry", 96, false);

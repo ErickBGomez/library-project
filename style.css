@@ -3,7 +3,7 @@
   --green-accent: #7cc15c;
   --green-accent-active: #5db651;
   --green-accent-hover: #93d874;
-  --book-cover-acent: #d2eac8;
+  --book-cover-accent: #d2eac8;
   --secondary-active: #eaeaea;
   --body-background: #ececec;
   --footer-background: #2f2f2f;
@@ -356,7 +356,7 @@ main {
 }
 
 .cover {
-  background-color: var(--book-cover-acent);
+  background-color: var(--book-cover-accent);
   aspect-ratio: 19 / 25;
   border-radius: 7px;
   display: flex;

@@ -1,5 +1,5 @@
 import { createBook } from "./dialogs.js";
-import { AddNewBook } from "./createBook.js";
+import { AddNewBook } from "./books.js";
 
 const form = document.querySelector("form#book-form");
 
