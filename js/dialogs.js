@@ -17,10 +17,10 @@ export const createBook = {
   },
 };
 
-export const openBook = {
-  modal: document.querySelector("#open-book-dialog"),
+export const bookInfo = {
+  modal: document.querySelector("#book-info-dialog"),
   buttons: {
-    cancel: document.querySelector("#open-book-dialog .cancel-button"),
+    cancel: document.querySelector("#book-info-dialog .cancel-button"),
   },
 };
 
@@ -58,4 +58,4 @@ createBook.buttons.cancel.addEventListener("click", () =>
 createBook.modal.addEventListener("close", () => ClearInputs(createBook));
 
 // Open book events
-openBook.buttons.cancel.addEventListener("click", () => openBook.modal.close());
+bookInfo.buttons.cancel.addEventListener("click", () => bookInfo.modal.close());

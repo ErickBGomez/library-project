@@ -510,58 +510,58 @@ input[data-state="invalid"] + .validation-msg {
 
 /* Dialog 2: Open book information */
 
-#open-book-dialog[open] {
+#book-info-dialog[open] {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 400px;
 }
 
-#open-book-dialog .upper-icons {
+#book-info-dialog .upper-icons {
   align-self: flex-start;
 }
 
-#open-book-dialog i.delete {
+#book-info-dialog i.delete {
   color: var(--input-error-color);
 }
 
-#open-book-dialog i.edit {
+#book-info-dialog i.edit {
   color: var(--text-color);
 }
 
-#open-book-dialog .cover {
+#book-info-dialog .cover {
   width: 225px;
   margin-top: 7px;
   margin-bottom: 15px;
 }
 
-#open-book-dialog .cover .cover-icon {
+#book-info-dialog .cover .cover-icon {
   font-size: 8rem;
 }
 
-#open-book-dialog .principal-info,
-#open-book-dialog .secondary-info {
+#book-info-dialog .principal-info,
+#book-info-dialog .secondary-info {
   display: flex;
   align-items: center;
 }
 
-#open-book-dialog .principal-info {
+#book-info-dialog .principal-info {
   flex-direction: column;
   color: var(--text-color);
   margin-bottom: 5px;
 }
 
-#open-book-dialog .principal-info .title {
+#book-info-dialog .principal-info .title {
   font-weight: 500;
   font-size: 1.8rem;
 }
 
-#open-book-dialog .principal-info .author {
+#book-info-dialog .principal-info .author {
   font-weight: 400;
   font-size: 1.4rem;
 }
 
-#open-book-dialog .secondary-info {
+#book-info-dialog .secondary-info {
   justify-content: center;
   gap: 10px;
   font-size: 1.1rem;

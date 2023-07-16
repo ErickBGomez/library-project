@@ -1,4 +1,4 @@
-import { openBook, InvokeModal } from "./dialogs.js";
+import { bookInfo, InvokeModal } from "./dialogs.js";
 
 const books = [];
 let bookIdCounter = 0;
@@ -41,9 +41,9 @@ function RefreshBookContainer() {
   }
 }
 
-function AddBookInformationEvent() {
+function AddBookInfoEvent() {
   booksContainer.childNodes.forEach((node) =>
-    node.addEventListener("click", () => InvokeModal(openBook))
+    node.addEventListener("click", () => InvokeModal(bookInfo))
   );
 }
 
@@ -55,7 +55,7 @@ export function InitializeBook(title, author, pages, readState) {
 
   RefreshBookContainer();
 
-  AddBookInformationEvent();
+  AddBookInfoEvent();
 }
 
 // Testing: Start program with pre-prefined books
