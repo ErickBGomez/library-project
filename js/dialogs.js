@@ -30,6 +30,19 @@ export const bookInfo = {
   },
 };
 
+const deleteBook = {
+  modal: document.querySelector("#delete-book-dialog"),
+  buttons: {
+    invoke: document.querySelector("#book-info-dialog .delete-icon"),
+    cancel: document.querySelector("#delete-book-dialog .cancel-button"),
+    delete: document.querySelector("#delete-book-dialog .delete-button"),
+  },
+  elements: {
+    title: document.querySelector("#delete-book-dialog .book-title"),
+    author: document.querySelector("#delete-book-dialog .book-author"),
+  },
+};
+
 // Functions
 function ClearInputs(dialogObject) {
   const inputsArray = Array.from(dialogObject.modal.querySelectorAll("input"));
@@ -74,3 +87,11 @@ createBook.modal.addEventListener("close", () => ClearInputs(createBook));
 
 // Open book events
 bookInfo.buttons.cancel.addEventListener("click", () => bookInfo.modal.close());
+
+// Delete book events
+deleteBook.buttons.cancel.addEventListener("click", () =>
+  deleteBook.modal.close()
+);
+deleteBook.buttons.invoke.addEventListener("click", () =>
+  InvokeModal(deleteBook)
+);
