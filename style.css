@@ -514,28 +514,17 @@ input[data-state="invalid"] + .validation-msg {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 425px;
+  width: 475px;
 }
 
-#book-info-dialog .dialog-header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  color: var(--text-color);
-}
-
-#book-info-dialog i.delete {
-  color: var(--input-error-color);
-}
-
-#book-info-dialog i.edit {
-  color: var(--text-color);
+#book-info-dialog .dialog-title {
+  align-self: start;
 }
 
 #book-info-dialog .cover {
   width: 225px;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 #book-info-dialog .cover .cover-icon {
@@ -574,8 +563,32 @@ input[data-state="invalid"] + .validation-msg {
   margin-bottom: 30px;
 }
 
+#book-info-dialog .actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
 #book-info-dialog .dialog-buttons {
   align-self: end;
+}
+
+#book-info-dialog .icon-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+#book-info-dialog i {
+  cursor: pointer;
+}
+
+#book-info-dialog i.delete {
+  color: var(--input-error-color);
+}
+
+#book-info-dialog i.edit {
+  color: var(--text-color);
 }
 
 /* Footer */

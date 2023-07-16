@@ -134,13 +134,7 @@
       </dialog>
 
       <dialog id="book-info-dialog" open>
-        <div class="dialog-header">
-          <h1 class="dialog-title">Book information</h1>
-          <section class="upper-icons">
-            <i class="material-symbols-outlined edit">edit</i>
-            <i class="material-symbols-outlined delete">delete</i>
-          </section>
-        </div>
+        <h1 class="dialog-title">Book information</h1>
         <section class="book-information">
           <div class="cover">
             <div class="cover-image">
@@ -160,9 +154,15 @@
             <p class="read-state">Not read yet</p>
           </div>
         </section>
-        <section class="dialog-buttons">
-          <button class="cancel-button secondary">Cancel</button>
-          <button class="confirm-button primary">Read book</button>
+        <section class="actions">
+          <div class="icon-buttons">
+            <i class="material-symbols-outlined edit">edit</i>
+            <i class="material-symbols-outlined delete">delete</i>
+          </div>
+          <div class="dialog-buttons">
+            <button class="cancel-button secondary">Cancel</button>
+            <button class="confirm-button primary">Read book</button>
+          </div>
         </section>
       </dialog>
     </div>
