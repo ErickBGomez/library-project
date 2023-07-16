@@ -457,6 +457,11 @@ i.empty-library-icon {
   padding: 17px 25px;
 }
 
+.dialog-title:not(#create-book-dialog .dialog-title) {
+  align-self: start;
+  margin-bottom: 20px;
+}
+
 /* Dialog animations */
 
 dialog[open] {
@@ -568,13 +573,8 @@ input[data-state="invalid"] + .validation-msg {
   width: 475px;
 }
 
-#book-info-dialog .dialog-title {
-  align-self: start;
-}
-
 #book-info-dialog .cover {
   width: 225px;
-  margin-top: 20px;
   margin-bottom: 20px;
 }
 
@@ -651,6 +651,42 @@ input[data-state="invalid"] + .validation-msg {
 #book-info-dialog .delete-icon::after {
   content: "Delete";
   left: -15px;
+}
+
+/* Delete book dialog */
+
+#delete-book-dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#delete-book-dialog .cover {
+  margin: 20px 0px;
+  width: 100px;
+}
+
+#delete-book-dialog .cover-icon {
+  font-size: 3.5rem;
+}
+
+#delete-book-dialog .book-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+#delete-book-dialog .book-author {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+#delete-book-dialog .dialog-buttons {
+  margin-top: 20px;
+  align-self: end;
+}
+
+#delete-book-dialog .dialog-buttons .delete {
+  background-color: var(--input-error-color);
 }
 
 /* Footer */

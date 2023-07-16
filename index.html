@@ -69,6 +69,7 @@
     </footer>
 
     <div class="dialog-boxes">
+      <!-- Create book -->
       <dialog id="create-book-dialog">
         <h1 class="dialog-title">Create new book</h1>
 
@@ -142,7 +143,8 @@
         </section>
       </dialog>
 
-      <dialog id="book-info-dialog" open>
+      <!-- Book info -->
+      <dialog id="book-info-dialog">
         <h1 class="dialog-title">Book information</h1>
         <section class="book-information">
           <div class="cover">
@@ -177,6 +179,25 @@
             <button class="confirm-button primary">Read book</button>
           </div>
         </section>
+      </dialog>
+
+      <!-- Delete book -->
+      <dialog id="delete-book-dialog" open>
+        <h1 class="dialog-title">Delete book</h1>
+        <p class="dialog-text">Are you sure you want to delete this book?</p>
+        <div class="cover">
+          <div class="cover-image">
+            <i class="material-symbols-outlined fill cover-icon"
+              >import_contacts</i
+            >
+          </div>
+        </div>
+        <p class="book-title">Title</p>
+        <p class="book-author">Author</p>
+        <div class="dialog-buttons">
+          <button class="cancel-button secondary">Cancel</button>
+          <button class="confirm-button delete primary">Delete</button>
+        </div>
       </dialog>
     </div>
   </body>
