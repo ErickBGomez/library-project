@@ -47,6 +47,23 @@ export const deleteBook = {
   },
 };
 
+const editBook = {
+  modal: document.querySelector("#edit-book-dialog"),
+  buttons: {
+    invoke: document.querySelector("#book-info-dialog .edit-icon"),
+    cancel: document.querySelector("#edit-book-dialog .cancel-button"),
+    confirm: document.querySelector("#edit-book-dialog .confirm-button"),
+  },
+  inputs: {
+    title: document.querySelector("#edit-book-dialog input#edit-book-title"),
+    author: document.querySelector("#edit-book-dialog input#edit-book-author"),
+    pages: document.querySelector("#edit-book-dialog input#edit-book-pages"),
+    readState: document.querySelector(
+      "#edit-book-dialog input#edit-book-read-state"
+    ),
+  },
+};
+
 // Functions
 function ClearInputs(dialogObject) {
   const inputsArray = Array.from(dialogObject.modal.querySelectorAll("input"));
@@ -83,8 +100,6 @@ export function InvokeBookInfo(book, index) {
     : "Not read yet";
 
   InvokeModal(bookInfo);
-
-  console.log(bookInfo.info);
 }
 
 export function InvokeDeleteBook(book) {
@@ -92,6 +107,15 @@ export function InvokeDeleteBook(book) {
   deleteBook.elements.author.innerText = book.author;
 
   InvokeModal(deleteBook);
+}
+
+function InvokeEditBook(book) {
+  editBook.inputs.title.value = book.title;
+  editBook.inputs.author.value = book.author;
+  editBook.inputs.pages.value = book.pages;
+  editBook.inputs.readState.checked = book.checked;
+
+  InvokeModal(editBook);
 }
 
 // Create book events
@@ -113,3 +137,9 @@ deleteBook.buttons.cancel.addEventListener("click", () =>
 deleteBook.buttons.invoke.addEventListener("click", () => {
   InvokeDeleteBook(bookInfo.info.currentBook);
 });
+
+// Edit book events
+editBook.buttons.invoke.addEventListener("click", () =>
+  InvokeEditBook(bookInfo.info.currentBook)
+);
+editBook.buttons.cancel.addEventListener("click", () => editBook.modal.close());
