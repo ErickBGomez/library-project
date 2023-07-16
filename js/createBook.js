@@ -33,7 +33,7 @@ function InsertBookCard(book) {
   booksContainer.innerHTML += newBookCard;
 }
 
-function CheckEmptyContainer() {
+function RefreshBookContainer() {
   if (books.length) {
     emptyLibraryText.style.display = "none";
   } else {
@@ -41,22 +41,21 @@ function CheckEmptyContainer() {
   }
 }
 
+function AddBookInformationEvent() {
+  booksContainer.childNodes.forEach((node) =>
+    node.addEventListener("click", () => InvokeModal(openBook))
+  );
+}
+
 export function InitializeBook(title, author, pages, readState) {
-  console.log(bookIdCounter);
   const newBook = new Book(title, author, pages, readState);
 
   books.push(newBook);
   InsertBookCard(newBook);
 
-  const bookElement = document.querySelector(
-    `.book-card[data-bookId="${newBook.id}"]`
-  );
+  RefreshBookContainer();
 
-  bookElement.addEventListener("click", () => {
-    console.log("hola");
-
-    InvokeModal(openBook);
-  });
+  AddBookInformationEvent();
 }
 
 // Testing: Start program with pre-prefined books
@@ -66,4 +65,4 @@ InitializeBook("The Little Prince", "Antoine de Saint-Exupéry", 96, false);
 InitializeBook("Don Quixote", "Miguel de Cervantes", 462, true);
 InitializeBook("Luz negra", "Álvaro Menéndez Leal", 130, true);
 
-CheckEmptyContainer();
+RefreshBookContainer();
