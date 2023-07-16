@@ -1,4 +1,4 @@
-import { bookInfo, InvokeModal, InvokeBookInfo } from "./dialogs.js";
+import { InvokeBookInfo } from "./dialogs.js";
 
 const books = [];
 let bookCards = [];

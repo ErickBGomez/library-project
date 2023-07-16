@@ -32,34 +32,33 @@ export const bookInfo = {
 
 // Functions
 function ClearInputs(dialogObject) {
-  if ("inputs" in dialogObject) {
-    const inputsArray = Array.from(
-      dialogObject.modal.querySelectorAll("input")
-    );
+  const inputsArray = Array.from(dialogObject.modal.querySelectorAll("input"));
 
-    for (const input of inputsArray) {
-      if (input.type !== "checkbox") {
-        input.value = "";
-        input.dataset.state = "valid";
-      } else {
-        input.checked = false;
-      }
+  for (const input of inputsArray) {
+    if (input.type !== "checkbox") {
+      input.value = "";
+      input.dataset.state = "valid";
+    } else {
+      input.checked = false;
     }
   }
 }
 
 export function InvokeModal(dialogObject) {
-  ClearInputs(dialogObject);
+  if ("inputs" in dialogObject) {
+    ClearInputs(dialogObject);
+  }
 
   dialogObject.modal.showModal();
 }
 
-// Improve here and add pages and readstate strings
 export function InvokeBookInfo(book) {
   bookInfo.elements.title.innerText = book.title;
   bookInfo.elements.author.innerText = book.author;
-  bookInfo.elements.pages.innerText = book.pages;
-  bookInfo.elements.readState.innerText = book.readState;
+  bookInfo.elements.pages.innerText = `${book.pages} pages`;
+  bookInfo.elements.readState.innerText = book.readState
+    ? "Already read"
+    : "Not read yet";
 
   InvokeModal(bookInfo);
 }
