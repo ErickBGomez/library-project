@@ -49,7 +49,7 @@ export function InitializeBook(title, author, pages, readState) {
   InsertBookCard(newBook);
 
   const bookElement = document.querySelector(
-    `div[data-bookId="${newBook.id}"]`
+    `.book-card[data-bookId="${newBook.id}"]`
   );
 
   bookElement.addEventListener("click", () => {

@@ -19,6 +19,9 @@ export const createBook = {
 
 export const openBook = {
   modal: document.querySelector("#open-book-dialog"),
+  buttons: {
+    cancel: document.querySelector("#open-book-dialog .cancel-button"),
+  },
 };
 
 // Functions
@@ -52,5 +55,7 @@ createBook.buttons.invoke.addEventListener("click", () =>
 createBook.buttons.cancel.addEventListener("click", () =>
   createBook.modal.close()
 );
-
 createBook.modal.addEventListener("close", () => ClearInputs(createBook));
+
+// Open book events
+openBook.buttons.cancel.addEventListener("click", () => openBook.modal.close());
