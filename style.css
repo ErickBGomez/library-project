@@ -9,7 +9,7 @@
   --footer-background: #2f2f2f;
   --text-color: #202020;
   --alt-text-color: #f5f5f5;
-  --subtext-color: #ababab;
+  --subtext-color: #949494;
   --input-background: #e0e0e0;
   --input-text-color: #6b6b6b;
   --input-error-color: #f15b6f;
@@ -514,11 +514,14 @@ input[data-state="invalid"] + .validation-msg {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 400px;
+  width: 425px;
 }
 
-#book-info-dialog .upper-icons {
-  align-self: flex-start;
+#book-info-dialog .dialog-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-color);
 }
 
 #book-info-dialog i.delete {
@@ -531,12 +534,12 @@ input[data-state="invalid"] + .validation-msg {
 
 #book-info-dialog .cover {
   width: 225px;
-  margin-top: 7px;
-  margin-bottom: 15px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 #book-info-dialog .cover .cover-icon {
-  font-size: 8rem;
+  font-size: 7rem;
 }
 
 #book-info-dialog .principal-info,
@@ -548,26 +551,31 @@ input[data-state="invalid"] + .validation-msg {
 #book-info-dialog .principal-info {
   flex-direction: column;
   color: var(--text-color);
-  margin-bottom: 5px;
 }
 
 #book-info-dialog .principal-info .title {
   font-weight: 500;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
+  margin-bottom: 5px;
 }
 
 #book-info-dialog .principal-info .author {
   font-weight: 400;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
 }
 
 #book-info-dialog .secondary-info {
   justify-content: center;
   gap: 10px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--subtext-color);
   font-weight: 400;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
+}
+
+#book-info-dialog .dialog-buttons {
+  align-self: end;
 }
 
 /* Footer */

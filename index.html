@@ -133,11 +133,14 @@
         </section>
       </dialog>
 
-      <dialog id="book-info-dialog">
-        <section class="upper-icons">
-          <i class="material-symbols-outlined delete">delete</i>
-          <i class="material-symbols-outlined edit">edit</i>
-        </section>
+      <dialog id="book-info-dialog" open>
+        <div class="dialog-header">
+          <h1 class="dialog-title">Book information</h1>
+          <section class="upper-icons">
+            <i class="material-symbols-outlined edit">edit</i>
+            <i class="material-symbols-outlined delete">delete</i>
+          </section>
+        </div>
         <section class="book-information">
           <div class="cover">
             <div class="cover-image">
@@ -148,11 +151,11 @@
           </div>
 
           <div class="principal-info">
-            <h1 class="title">Book title</h1>
-            <h2 class="author">Author's name</h2>
+            <p class="title">Book title</p>
+            <p class="author">Author's name</p>
           </div>
           <div class="secondary-info">
-            <p class="pages"><span class="pages-number">100</span> pages</p>
+            <p class="pages"><span class="pages-number">#</span> pages</p>
             &centerdot;
             <p class="read-state">Not read yet</p>
           </div>
