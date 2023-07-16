@@ -457,7 +457,10 @@ i.empty-library-icon {
   padding: 17px 25px;
 }
 
-.dialog-title:not(#create-book-dialog .dialog-title) {
+.dialog-title:not(
+    #create-book-dialog .dialog-title,
+    #edit-book-dialog .dialog-title
+  ) {
   align-self: start;
   margin-bottom: 20px;
 }
@@ -503,9 +506,10 @@ dialog[open]::backdrop {
   }
 }
 
-/* Dialog 1: Create new book */
+/* Dialog 1: Create and edit new book */
 
-#create-book-dialog[open] {
+#create-book-dialog[open],
+#edit-book-dialog[open] {
   display: grid;
   grid-template-columns: repeat(2, min-content);
   grid-template-rows: repeat(3, min-content);
@@ -513,16 +517,19 @@ dialog[open]::backdrop {
   row-gap: 25px;
 }
 
-#create-book-dialog .dialog-title {
+#create-book-dialog .dialog-title,
+#edit-book-dialog .dialog-title {
   grid-column: 1 / -1;
 }
 
-#create-book-dialog .cover {
+#create-book-dialog .cover,
+#edit-book-dialog .cover {
   height: 325px;
   align-self: center;
 }
 
-#create-book-dialog .cover-icon {
+#create-book-dialog .cover-icon,
+#edit-book-dialog .cover-icon {
   font-size: 6.5rem;
 }
 

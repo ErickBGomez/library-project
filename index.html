@@ -79,7 +79,7 @@
           </div>
         </section>
 
-        <form id="book-form" method="dialog">
+        <form id="create-book-form" method="dialog">
           <section class="inputs-section">
             <div class="input-container">
               <label for="book-title">Book title</label>
@@ -198,6 +198,80 @@
           <button class="cancel-button secondary">Cancel</button>
           <button class="confirm-button delete-button primary">Delete</button>
         </div>
+      </dialog>
+
+      <!-- Edit book -->
+      <dialog id="edit-book-dialog" open>
+        <h1 class="dialog-title">Edit book information</h1>
+
+        <section class="cover">
+          <div class="cover-image">
+            <i class="material-symbols-outlined fill cover-icon">book</i>
+          </div>
+        </section>
+
+        <form id="edit-book-form" method="dialog">
+          <section class="inputs-section">
+            <div class="input-container">
+              <label for="edit-book-title">Book title</label>
+              <input
+                type="text"
+                name="edit-book-title"
+                id="edit-book-title"
+                placeholder=" "
+                data-state="valid"
+              />
+              <span class="validation-msg">* This field has to be filled.</span>
+            </div>
+            <div class="input-container">
+              <label for="edit-book-author">Author's name</label>
+              <input
+                type="text"
+                name="edit-book-author"
+                id="edit-book-author"
+                placeholder=" "
+                data-state="valid"
+              />
+              <span class="validation-msg">* This field has to be filled.</span>
+            </div>
+            <div class="input-container">
+              <label for="edit-book-pages">Number of pages</label>
+              <input
+                type="tel"
+                name="edit-book-pages"
+                id="edit-book-pages"
+                placeholder=" "
+                data-state="valid"
+              />
+              <span class="validation-msg">* This field has to be filled.</span>
+            </div>
+            <div class="input-container">
+              <label class="switch-container"
+                >Have you already read it?
+                <input
+                  type="checkbox"
+                  name="edit-book-read-state"
+                  id="edit-book-read-state"
+                />
+                <span class="switch">
+                  <span class="slider"></span>
+                </span>
+              </label>
+            </div>
+          </section>
+        </form>
+        <section class="dialog-buttons">
+          <button
+            class="cancel-button secondary"
+            type="button"
+            form="book-form"
+          >
+            Cancel
+          </button>
+          <button class="confirm-button primary" type="submit" form="book-form">
+            Confirm
+          </button>
+        </section>
       </dialog>
     </div>
   </body>

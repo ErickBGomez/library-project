@@ -1,7 +1,7 @@
 import { createBook } from "./dialogs.js";
 import { AddBook } from "./books.js";
 
-const form = document.querySelector("form#book-form");
+const createBookForm = document.querySelector("form#create-book-form");
 
 function ValidateInput(input) {
   if (input.type === "checkbox") return;
@@ -53,4 +53,4 @@ for (const input in createBook.inputs) {
   }
 }
 
-form.addEventListener("submit", CustomSubmit);
+createBookForm.addEventListener("submit", CustomSubmit);
