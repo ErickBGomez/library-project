@@ -1,4 +1,4 @@
-import { InvokeBookInfo } from "./dialogs.js";
+import { deleteBook, bookInfo, InvokeBookInfo } from "./dialogs.js";
 
 const books = [];
 let bookCards = [];
@@ -48,7 +48,9 @@ function RefreshBooks() {
     bookCards = document.querySelectorAll(".book-card");
 
     bookCards.forEach((bookCard, index) => {
-      bookCard.addEventListener("click", () => InvokeBookInfo(books[index]));
+      bookCard.addEventListener("click", () =>
+        InvokeBookInfo(books[index], index)
+      );
     });
   } else {
     emptyLibraryLabel.style.display = "block";
@@ -62,6 +64,10 @@ export function AddBook(title, author, pages, readState) {
   RefreshBooks();
 }
 
+function DeleteBook(bookIndex) {
+  books.splice(bookIndex, 1);
+}
+
 // Testing: Start program with pre-predefined books
 AddBook("Dracula", "Bram Stoker", 418, false);
 AddBook("The Divine Comedy", "Dante Alighieri", 304, true);
@@ -70,3 +76,12 @@ AddBook("Don Quixote", "Miguel de Cervantes", 462, true);
 AddBook("Luz negra", "Álvaro Menéndez Leal", 130, true);
 
 RefreshBooks();
+
+// Events
+deleteBook.buttons.delete.addEventListener("click", () => {
+  DeleteBook(bookInfo.info.currentIndex);
+  RefreshBooks();
+
+  deleteBook.modal.close();
+  bookInfo.modal.close();
+});
