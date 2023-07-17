@@ -47,7 +47,7 @@ export const deleteBook = {
   },
 };
 
-const editBook = {
+export const editBook = {
   modal: document.querySelector("#edit-book-dialog"),
   buttons: {
     invoke: document.querySelector("#book-info-dialog .edit-icon"),
@@ -110,12 +110,12 @@ export function InvokeDeleteBook(book) {
 }
 
 function InvokeEditBook(book) {
+  InvokeModal(editBook);
+
   editBook.inputs.title.value = book.title;
   editBook.inputs.author.value = book.author;
   editBook.inputs.pages.value = book.pages;
-  editBook.inputs.readState.checked = book.checked;
-
-  InvokeModal(editBook);
+  editBook.inputs.readState.checked = book.readState;
 }
 
 // Create book events
