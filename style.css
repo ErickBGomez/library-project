@@ -1,18 +1,56 @@
-:root {
-  /* Define global colors */
-  --green-accent: #7cc15c;
+:root.light {
+  /* Light theme colors */
   --green-accent-active: #5db651;
   --green-accent-hover: #93d874;
+  --empty-container-color: #adadad;
+  --header-shadow: #33333336;
+  --white-color: #f5f5f5;
   --book-cover-accent: #d2eac8;
+  --secondary-hover: #f5f5f5;
   --secondary-active: #eaeaea;
   --body-background: #ececec;
+  --card-background: #f5f5f5;
+  --card-shadow: #a3a3a32e;
   --footer-background: #2f2f2f;
   --text-color: #202020;
-  --alt-text-color: #f5f5f5;
   --subtext-color: #949494;
-  --input-background: #e0e0e0;
-  --input-text-color: #6b6b6b;
+  --input-background: #e3e3e3;
+  --input-shadow: #7cc15cc7;
+  --input-text-color: #595959;
   --input-error-color: #f15b6f;
+  --input-error-shadow: #f15b6f8e;
+  --icon-hover: #e8e8e8;
+  --icon-active: #cfcfcf;
+}
+
+:root.dark {
+  /* Dark theme colors */
+  --green-accent-active: #4ba33f;
+  --green-accent-hover: #96db7b;
+  --empty-container-color: #686868;
+  --header-shadow: #272727cc;
+  --white-color: #f5f5f5;
+  --book-cover-accent: #b0e29b;
+  --secondary-hover: #4e4e4e;
+  --secondary-active: #494949;
+  --body-background: #2e2e2e;
+  --card-background: #3b3b3b;
+  --card-shadow: #27272796;
+  --footer-background: #272727;
+  --text-color: #e9e9e9;
+  --subtext-color: #9b9b9b;
+  --input-background: #636363;
+  --input-shadow: #7cc15ccb;
+  --input-text-color: #cecece;
+  --input-error-color: #f36679;
+  --input-error-shadow: #f15b6fd2;
+  --icon-hover: #595959;
+  --icon-active: #474747;
+}
+
+:root {
+  /* Global colors */
+  --green-accent: #7cc15c;
 
   /* Other variables */
   --hover-transition: 100ms;
@@ -45,7 +83,7 @@ i.material-symbols-outlined {
   opacity: 0;
   font-size: 1rem;
   background-color: #2f2f2f;
-  color: var(--alt-text-color);
+  color: var(--white-color);
   padding: 7px;
   border-radius: 5px;
   transition: 200ms;
@@ -101,8 +139,10 @@ body {
 h1,
 h2,
 h3,
-p {
+p,
+label {
   margin: 0;
+  color: var(--text-color);
 }
 
 h1 {
@@ -152,7 +192,12 @@ input[type="tel"]:focus {
 
 input[type="text"]:focus,
 input[type="tel"]:focus {
-  box-shadow: 0 0 14px -4px var(--green-accent);
+  box-shadow: 0 0 14px -3px var(--input-shadow);
+}
+
+input[type="text"][data-state="invalid"]:focus,
+input[type="tel"][data-state="invalid"]:focus {
+  box-shadow: 0 0 14px -3px var(--input-error-shadow);
 }
 
 input[type="text"][data-state="invalid"],
@@ -221,7 +266,7 @@ button {
   font-weight: 600;
   background-color: var(--green-accent);
   border: none;
-  color: var(--alt-text-color);
+  color: var(--white-color);
 }
 
 .primary:hover {
@@ -234,7 +279,7 @@ button {
 
 .secondary {
   font-weight: 500;
-  background-color: var(--alt-text-color);
+  background-color: var(--card-background);
   border: 3px solid var(--green-accent);
   color: var(--green-accent);
 }
@@ -242,6 +287,7 @@ button {
 .secondary:hover {
   border-color: var(--green-accent-hover);
   color: var(--green-accent-hover);
+  background-color: var(--secondary-hover);
 }
 
 .secondary:active {
@@ -262,11 +308,11 @@ header {
   background-color: var(--green-accent);
   padding: 16px 0 16px 0;
 
-  box-shadow: 0 0 32px 12px #33333336;
+  box-shadow: 0 0 32px 12px var(--header-shadow);
 }
 
 .header-title {
-  color: var(--alt-text-color);
+  color: var(--white-color);
   font-size: 2.4rem;
   font-weight: 800;
 }
@@ -274,7 +320,7 @@ header {
 .logo {
   width: 64px;
   height: 64px;
-  background-color: var(--alt-text-color);
+  background-color: var(--white-color);
 }
 
 .header-title,
@@ -291,16 +337,26 @@ header {
   top: 10px;
 }
 
-.actions-icons > a:link,
-.actions-icons > a:visited,
-.actions-icons > i {
-  color: var(--alt-text-color);
+.actions-icons a:link,
+.actions-icons a:visited,
+.actions-icons i {
+  color: var(--white-color);
 }
 
 .actions-icons i {
   padding: 7px;
   border-radius: 10px;
   cursor: pointer;
+  transition: var(--hover-transition);
+}
+
+.actions-icons i:hover {
+  background-color: var(--green-accent-hover);
+  transition: var(--hover-transition);
+}
+
+.actions-icons i:active {
+  background-color: var(--green-accent-active);
   transition: var(--hover-transition);
 }
 
@@ -339,10 +395,10 @@ main {
 
 .book-card {
   position: relative;
-  background-color: var(--alt-text-color);
+  background-color: var(--card-background);
   border-radius: 12px;
   padding: 10px;
-  box-shadow: 0 0 14px 5px #a3a3a32e;
+  box-shadow: 0 0 14px 5px var(--card-shadow);
 
   cursor: pointer;
   user-select: none;
@@ -394,7 +450,7 @@ i.read-icon {
   top: 10px;
   right: 10px;
 
-  background-color: var(--alt-text-color);
+  background-color: var(--card-background);
   border-bottom-left-radius: 5px;
   color: var(--green-accent);
 }
@@ -411,7 +467,11 @@ i.read-icon {
 
 .empty-library {
   text-align: center;
-  color: var(--subtext-color);
+}
+
+.empty-library p,
+.empty-library i {
+  color: var(--empty-container-color);
 }
 
 p.empty-library-title {
@@ -441,7 +501,7 @@ i.empty-library-icon {
   align-items: center;
   justify-content: center;
   padding: 7px;
-  box-shadow: 0 0 10px 4px #4848483a;
+  box-shadow: 0 0 10px 4px var(--card-shadow);
 }
 
 .create-book-button i {
@@ -451,7 +511,7 @@ i.empty-library-icon {
 /* Dialog boxes */
 
 .dialog-boxes > dialog {
-  background-color: var(--alt-text-color);
+  background-color: var(--card-background);
   border: none;
   border-radius: 16px;
   padding: 17px 25px;
@@ -616,9 +676,12 @@ input[data-state="invalid"] + .validation-msg {
   justify-content: center;
   gap: 10px;
   font-size: 1rem;
-  color: var(--subtext-color);
   font-weight: 400;
   margin-bottom: 30px;
+}
+
+#book-info-dialog .secondary-info p {
+  color: var(--subtext-color);
 }
 
 #book-info-dialog .actions {
@@ -634,12 +697,29 @@ input[data-state="invalid"] + .validation-msg {
 
 #book-info-dialog .icon-buttons {
   display: flex;
-  gap: 10px;
+  gap: 7px;
 }
 
 #book-info-dialog .icon-buttons span {
   cursor: pointer;
   position: relative;
+}
+
+#book-info-dialog span i {
+  padding: 7px;
+  border-radius: 10px;
+  background-color: var(--card-background);
+  transition: var(--hover-transition);
+}
+
+#book-info-dialog span i:hover {
+  background-color: var(--icon-hover);
+  transition: var(--hover-transition);
+}
+
+#book-info-dialog span i:active {
+  background-color: var(--icon-active);
+  transition: var(--hover-transition);
 }
 
 #book-info-dialog i.delete {
@@ -685,6 +765,7 @@ input[data-state="invalid"] + .validation-msg {
 #delete-book-dialog .book-author {
   font-size: 1.2rem;
   font-weight: 400;
+  color: var(--subtext-color);
 }
 
 #delete-book-dialog .dialog-buttons {
@@ -700,7 +781,7 @@ input[data-state="invalid"] + .validation-msg {
 
 footer {
   background-color: var(--footer-background);
-  color: var(--alt-text-color);
+  color: var(--white-color);
   padding: 10px 0 10px 0;
   text-align: center;
 }
