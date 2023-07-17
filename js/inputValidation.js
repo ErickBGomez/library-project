@@ -3,14 +3,31 @@ import { AddBook, EditBook } from "./books.js";
 
 const createBookForm = document.querySelector("form#create-book-form");
 const editBookForm = document.querySelector("form#edit-book-form");
+const numbersRegex = /^\d+$/;
+
+function SetCustomValidity(inputElement, message) {
+  const validationMsg = inputElement.parentElement.querySelector(
+    "span.validation-msg"
+  );
+
+  if (!message) {
+    inputElement.dataset.state = "valid";
+    return;
+  }
+
+  inputElement.dataset.state = "invalid";
+  validationMsg.innerText = `* ${message}`;
+}
 
 function ValidateInput(input) {
   if (input.type === "checkbox") return;
 
-  if (input.value) {
-    input.dataset.state = "valid";
+  if (!input.value) {
+    SetCustomValidity(input, "Field cannot be empty");
+  } else if (input.type === "tel" && !numbersRegex.test(input.value)) {
+    SetCustomValidity(input, "Field can only contain numbers");
   } else {
-    input.dataset.state = "invalid";
+    SetCustomValidity(input);
   }
 }
 
