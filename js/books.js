@@ -68,6 +68,18 @@ function DeleteBook(bookIndex) {
   books.splice(bookIndex, 1);
 }
 
+export function EditBook(index, title, author, pages, readState) {
+  delete books[index];
+
+  const newBook = new Book(title, author, pages, readState);
+  books[index] = newBook;
+
+  RefreshBooks();
+
+  bookInfo.modal.close();
+  InvokeBookInfo(books[index], index);
+}
+
 // Testing: Start program with pre-predefined books
 AddBook("Dracula", "Bram Stoker", 418, false);
 AddBook("The Divine Comedy", "Dante Alighieri", 304, true);
