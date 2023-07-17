@@ -80,13 +80,6 @@ export function EditBook(index, title, author, pages, readState) {
   InvokeBookInfo(books[index], index);
 }
 
-// Testing: Start program with pre-predefined books
-AddBook("Dracula", "Bram Stoker", 418, false);
-AddBook("The Divine Comedy", "Dante Alighieri", 304, true);
-AddBook("The Little Prince", "Antoine de Saint-Exupéry", 96, false);
-AddBook("Don Quixote", "Miguel de Cervantes", 462, true);
-AddBook("Luz negra", "Álvaro Menéndez Leal", 130, true);
-
 RefreshBooks();
 
 // Events
