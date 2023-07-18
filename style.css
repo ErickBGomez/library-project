@@ -73,46 +73,6 @@ i.material-symbols-outlined {
   font-variation-settings: "FILL" 1;
 }
 
-/* Icon buttons */
-
-/* Icon button hover text */
-
-.icon-button::after {
-  visibility: hidden;
-  position: absolute;
-  opacity: 0;
-  font-size: 1rem;
-  font-weight: 500;
-  background-color: #2f2f2f;
-  color: var(--white-color);
-  padding: 7px;
-  border-radius: 5px;
-  transition: 200ms;
-}
-
-.icon-button:hover::after {
-  visibility: visible;
-  opacity: 1;
-
-  transition: 200ms;
-}
-
-.icon-button.up::after {
-  top: -20px;
-}
-
-.icon-button.up:hover::after {
-  top: -35px;
-}
-
-.icon-button.down::after {
-  bottom: -20px;
-}
-
-.icon-button.down:hover::after {
-  bottom: -35px;
-}
-
 *,
 *::before,
 *::after {
@@ -326,6 +286,46 @@ header {
 .header-title,
 .logo {
   user-select: none;
+}
+
+/* Icon buttons */
+
+/* Icon button hover text */
+
+.icon-button::after {
+  visibility: hidden;
+  position: absolute;
+  opacity: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #2f2f2f;
+  color: var(--white-color);
+  padding: 7px;
+  border-radius: 5px;
+  transition: 200ms;
+}
+
+.icon-button:hover::after {
+  visibility: visible;
+  opacity: 1;
+
+  transition: 200ms;
+}
+
+.icon-button.up::after {
+  top: -20px;
+}
+
+.icon-button.up:hover::after {
+  top: -35px;
+}
+
+.icon-button.down::after {
+  bottom: -20px;
+}
+
+.icon-button.down:hover::after {
+  bottom: -35px;
 }
 
 /* Action buttons */
