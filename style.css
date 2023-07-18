@@ -21,6 +21,9 @@
   --input-error-shadow: #f15b6f8e;
   --icon-hover: #e8e8e8;
   --icon-active: #cfcfcf;
+  --delete-accent: #f15b6f;
+  --delete-accent-hover: #f77889;
+  --delete-accent-active: #d14054;
 }
 
 :root.dark {
@@ -46,6 +49,9 @@
   --input-error-shadow: #f15b6fd2;
   --icon-hover: #595959;
   --icon-active: #474747;
+  --delete-accent: #f36679;
+  --delete-accent-hover: #f07787;
+  --delete-accent-active: #c24758;
 }
 
 :root {
@@ -361,9 +367,6 @@ header {
 }
 
 /* Actions icons hover text */
-
-.icon-buttons *::after {
-}
 
 .icon-buttons .code-icon::after {
   content: "Open code";
@@ -728,7 +731,7 @@ input[data-state="invalid"] + .validation-msg {
 }
 
 #book-info-dialog i.delete {
-  color: var(--input-error-color);
+  color: var(--delete-accent);
 }
 
 #book-info-dialog i.edit {
@@ -779,7 +782,18 @@ input[data-state="invalid"] + .validation-msg {
 }
 
 #delete-book-dialog .dialog-buttons .delete-button {
-  background-color: var(--input-error-color);
+  background-color: var(--delete-accent);
+  transition: var(--hover-transition);
+}
+
+#delete-book-dialog .dialog-buttons .delete-button:hover {
+  background-color: var(--delete-accent-hover);
+  transition: var(--hover-transition);
+}
+
+#delete-book-dialog .dialog-buttons .delete-button:active {
+  background-color: var(--delete-accent-active);
+  transition: var(--hover-transition);
 }
 
 /* Footer */
