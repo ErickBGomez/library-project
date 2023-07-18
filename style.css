@@ -2,7 +2,7 @@
   /* Light theme colors */
   --green-accent-active: #5db651;
   --green-accent-hover: #93d874;
-  --empty-container-color: #adadad;
+  --empty-container-color: #929292;
   --header-shadow: #33333336;
   --white-color: #f5f5f5;
   --book-cover-accent: #d2eac8;
@@ -27,7 +27,7 @@
   /* Dark theme colors */
   --green-accent-active: #4ba33f;
   --green-accent-hover: #96db7b;
-  --empty-container-color: #686868;
+  --empty-container-color: #757575;
   --header-shadow: #272727cc;
   --white-color: #f5f5f5;
   --book-cover-accent: #b0e29b;
@@ -82,6 +82,7 @@ i.material-symbols-outlined {
   position: absolute;
   opacity: 0;
   font-size: 1rem;
+  font-weight: 500;
   background-color: #2f2f2f;
   color: var(--white-color);
   padding: 7px;
@@ -121,8 +122,7 @@ i.material-symbols-outlined {
 /* General styles */
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Quicksand", sans-serif;
 
   margin: 0;
   background-color: var(--body-background);
@@ -171,7 +171,7 @@ label {
 
 input[type="text"],
 input[type="tel"] {
-  font-weight: 400;
+  font-weight: 500;
   width: 100%;
   background-color: var(--input-background);
   color: var(--input-text-color);
@@ -252,6 +252,8 @@ input[type="checkbox"]:checked + .switch .slider {
 
 /* Button states */
 button {
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
   user-select: none;
 }
@@ -263,7 +265,6 @@ button {
 }
 
 .primary {
-  font-weight: 600;
   background-color: var(--green-accent);
   border: none;
   color: var(--white-color);
@@ -278,7 +279,6 @@ button {
 }
 
 .secondary {
-  font-weight: 500;
   background-color: var(--card-background);
   border: 3px solid var(--green-accent);
   color: var(--green-accent);
@@ -362,6 +362,9 @@ header {
 
 /* Actions icons hover text */
 
+.icon-buttons *::after {
+}
+
 .icon-buttons .code-icon::after {
   content: "Open code";
   left: -25px;
@@ -430,11 +433,13 @@ i.cover-icon {
 
 .book-card .title {
   font-size: 1.2rem;
+  font-weight: 500;
   margin: 10px 0 5px 0;
 }
 
 .book-card .author {
   font-size: 0.9rem;
+  font-weight: 500;
   color: var(--subtext-color);
 }
 
@@ -606,7 +611,7 @@ dialog[open]::backdrop {
 
 .validation-msg {
   display: none;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--input-error-color);
   position: absolute;
   bottom: -18px;
@@ -661,13 +666,13 @@ input[data-state="invalid"] + .validation-msg {
 }
 
 #book-info-dialog .principal-info .title {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.7rem;
   margin-bottom: 5px;
 }
 
 #book-info-dialog .principal-info .author {
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1.3rem;
   margin-bottom: 5px;
 }
@@ -676,7 +681,7 @@ input[data-state="invalid"] + .validation-msg {
   justify-content: center;
   gap: 10px;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 500;
   margin-bottom: 30px;
 }
 
@@ -759,12 +764,12 @@ input[data-state="invalid"] + .validation-msg {
 
 #delete-book-dialog .book-title {
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 #delete-book-dialog .book-author {
   font-size: 1.2rem;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--subtext-color);
 }
 
@@ -788,7 +793,7 @@ footer {
 
 a:link,
 a:visited {
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
   color: var(--green-accent);
 }
