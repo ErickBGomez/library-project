@@ -266,7 +266,7 @@ header {
   gap: 10px;
 
   background-color: var(--green-accent);
-  padding: 16px 0 16px 0;
+  padding: 16px 0;
 
   box-shadow: 0 0 32px 12px var(--header-shadow);
 }
@@ -333,7 +333,7 @@ header {
   position: absolute;
   display: flex;
   gap: 5px;
-  right: 17px;
+  right: 18px;
   top: 10px;
 }
 
@@ -367,12 +367,12 @@ header {
 
 .icon-buttons .code-icon::after {
   content: "Open code";
-  left: -25px;
+  left: -27px;
 }
 
 .icon-buttons .theme-icon::after {
   content: "Toggle theme";
-  left: -20px;
+  left: -21px;
 }
 
 /* Main elements */
@@ -737,12 +737,12 @@ input[data-state="invalid"] + .validation-msg {
 
 #book-info-dialog .edit-icon::after {
   content: "Edit";
-  left: -3px;
+  left: 2px;
 }
 
 #book-info-dialog .delete-icon::after {
   content: "Delete";
-  left: -15px;
+  left: -8px;
 }
 
 /* Delete book dialog */
