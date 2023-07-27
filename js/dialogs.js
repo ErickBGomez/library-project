@@ -1,5 +1,24 @@
 // Dialogs
 
+function InputsFactory(dialogSelector) {
+  const inputs = {
+    title: document.querySelector(
+      `${dialogSelector}-dialog input${dialogSelector}-title`
+    ),
+    author: document.querySelector(
+      `${dialogSelector}-dialog input${dialogSelector}-author`
+    ),
+    pages: document.querySelector(
+      `${dialogSelector}-dialog input${dialogSelector}-pages`
+    ),
+    readState: document.querySelector(
+      `${dialogSelector}-dialog input${dialogSelector}-read-state`
+    ),
+  };
+
+  return inputs;
+}
+
 export const createBook = {
   modal: document.querySelector("#create-book-dialog"),
   buttons: {
