@@ -13,71 +13,95 @@ function InputsFactory(dialogSelector) {
   return inputs;
 }
 
-export const createBook = {
-  modal: document.querySelector("dialog#create-book"),
-  buttons: {
-    invoke: document.querySelector(".create-book-button"),
-    cancel: document.querySelector("dialog#create-book .cancel-button"),
-    confirm: document.querySelector("dialog#create-book .confirm-button"),
-  },
-  inputs: {
-    title: document.querySelector("dialog#create-book input#create-book-title"),
-    author: document.querySelector(
-      "dialog#create-book input#create-book-author"
-    ),
-    pages: document.querySelector("dialog#create-book input#create-book-pages"),
-    readState: document.querySelector(
-      "dialog#create-book input#create-book-read-state"
-    ),
-  },
-};
+function DialogFactory(dialogSelector) {
+  const dialog = {
+    modal: document.querySelector(dialogSelector),
+    buttons: {},
+  };
 
-export const bookInfo = {
-  info: {
-    currentBook: null,
-    currentIndex: null,
-  },
-  modal: document.querySelector("#book-info-dialog"),
-  buttons: {
-    cancel: document.querySelector("#book-info-dialog .cancel-button"),
-  },
-  elements: {
-    title: document.querySelector("#book-info-dialog .title"),
-    author: document.querySelector("#book-info-dialog .author"),
-    pages: document.querySelector("#book-info-dialog .pages"),
-    readState: document.querySelector("#book-info-dialog .read-state"),
-  },
-};
+  return dialog;
+}
 
-export const deleteBook = {
-  modal: document.querySelector("#delete-book-dialog"),
-  buttons: {
-    invoke: document.querySelector("#book-info-dialog .delete-icon"),
-    cancel: document.querySelector("#delete-book-dialog .cancel-button"),
-    delete: document.querySelector("#delete-book-dialog .delete-button"),
-  },
-  elements: {
-    title: document.querySelector("#delete-book-dialog .book-title"),
-    author: document.querySelector("#delete-book-dialog .book-author"),
-  },
-};
+function DialogWithInputFactory(dialogSelector) {
+  const dialogParent = DialogFactory(dialogSelector);
 
-export const editBook = {
-  modal: document.querySelector("#edit-book-dialog"),
-  buttons: {
-    invoke: document.querySelector("#book-info-dialog .edit-icon"),
-    cancel: document.querySelector("#edit-book-dialog .cancel-button"),
-    confirm: document.querySelector("#edit-book-dialog .confirm-button"),
-  },
-  inputs: {
-    title: document.querySelector("#edit-book-dialog input#edit-book-title"),
-    author: document.querySelector("#edit-book-dialog input#edit-book-author"),
-    pages: document.querySelector("#edit-book-dialog input#edit-book-pages"),
-    readState: document.querySelector(
-      "#edit-book-dialog input#edit-book-read-state"
-    ),
-  },
-};
+  const dialogWithInput = {
+    inputs: InputsFactory(dialogSelector),
+  };
+
+  return Object.assign({}, dialogParent, dialogWithInput);
+}
+
+export const createBook = DialogWithInputFactory("#create-book");
+export const editBook = DialogWithInputFactory("#edit-book");
+export const bookInfo = DialogFactory("#book-info");
+export const deleteBook = DialogFactory("#delete-book");
+
+// export const createBook = {
+//   modal: document.querySelector("dialog#create-book"),
+//   buttons: {
+//     invoke: document.querySelector(".create-book-button"),
+//     cancel: document.querySelector("dialog#create-book .cancel-button"),
+//     confirm: document.querySelector("dialog#create-book .confirm-button"),
+//   },
+//   inputs: {
+//     title: document.querySelector("dialog#create-book input#create-book-title"),
+//     author: document.querySelector(
+//       "dialog#create-book input#create-book-author"
+//     ),
+//     pages: document.querySelector("dialog#create-book input#create-book-pages"),
+//     readState: document.querySelector(
+//       "dialog#create-book input#create-book-read-state"
+//     ),
+//   },
+// };
+
+// export const bookInfo = {
+//   info: {
+//     currentBook: null,
+//     currentIndex: null,
+//   },
+//   modal: document.querySelector("dialog#book-info"),
+//   buttons: {
+//     cancel: document.querySelector("dialog#book-info .cancel-button"),
+//   },
+//   elements: {
+//     title: document.querySelector("dialog#book-info .title"),
+//     author: document.querySelector("dialog#book-info .author"),
+//     pages: document.querySelector("dialog#book-info .pages"),
+//     readState: document.querySelector("dialog#book-info .read-state"),
+//   },
+// };
+
+// export const deleteBook = {
+//   modal: document.querySelector("dialog#delete-book"),
+//   buttons: {
+//     invoke: document.querySelector("dialog#book-info .delete-icon"),
+//     cancel: document.querySelector("dialog#delete-book .cancel-button"),
+//     delete: document.querySelector("dialog#delete-book .delete-button"),
+//   },
+//   elements: {
+//     title: document.querySelector("dialog#delete-book .book-title"),
+//     author: document.querySelector("dialog#delete-book .book-author"),
+//   },
+// };
+
+// export const editBook = {
+//   modal: document.querySelector("dialog#edit-book"),
+//   buttons: {
+//     invoke: document.querySelector("dialog#book-info .edit-icon"),
+//     cancel: document.querySelector("dialog#edit-book .cancel-button"),
+//     confirm: document.querySelector("dialog#edit-book .confirm-button"),
+//   },
+//   inputs: {
+//     title: document.querySelector("dialog#edit-book input#edit-book-title"),
+//     author: document.querySelector("dialog#edit-book input#edit-book-author"),
+//     pages: document.querySelector("dialog#edit-book input#edit-book-pages"),
+//     readState: document.querySelector(
+//       "dialog#edit-book input#edit-book-read-state"
+//     ),
+//   },
+// };
 
 // Functions
 function ClearInputs(dialogObject) {

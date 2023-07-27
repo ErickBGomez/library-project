@@ -525,7 +525,7 @@ i.empty-library-icon {
 
 .dialog-title:not(
     dialog#create-book .dialog-title,
-    #edit-book-dialog .dialog-title
+    dialog#edit-book .dialog-title
   ) {
   align-self: start;
   margin-bottom: 20px;
@@ -575,7 +575,7 @@ dialog[open]::backdrop {
 /* Dialog 1: Create and edit new book */
 
 dialog#create-book[open],
-#edit-book-dialog[open] {
+dialog#edit-book[open] {
   display: grid;
   grid-template-columns: repeat(2, min-content);
   grid-template-rows: repeat(3, min-content);
@@ -584,18 +584,18 @@ dialog#create-book[open],
 }
 
 dialog#create-book .dialog-title,
-#edit-book-dialog .dialog-title {
+dialog#edit-book .dialog-title {
   grid-column: 1 / -1;
 }
 
 dialog#create-book .cover,
-#edit-book-dialog .cover {
+dialog#edit-book .cover {
   height: 325px;
   align-self: center;
 }
 
 dialog#create-book .cover-icon,
-#edit-book-dialog .cover-icon {
+dialog#edit-book .cover-icon {
   font-size: 6.5rem;
 }
 
@@ -639,46 +639,46 @@ input[data-state="invalid"] + .validation-msg {
 
 /* Dialog 2: Open book information */
 
-#book-info-dialog[open] {
+dialog#book-info[open] {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 475px;
 }
 
-#book-info-dialog .cover {
+dialog#book-info .cover {
   width: 225px;
   margin-bottom: 20px;
 }
 
-#book-info-dialog .cover .cover-icon {
+dialog#book-info .cover .cover-icon {
   font-size: 7rem;
 }
 
-#book-info-dialog .principal-info,
-#book-info-dialog .secondary-info {
+dialog#book-info .principal-info,
+dialog#book-info .secondary-info {
   display: flex;
   align-items: center;
 }
 
-#book-info-dialog .principal-info {
+dialog#book-info .principal-info {
   flex-direction: column;
   color: var(--text-color);
 }
 
-#book-info-dialog .principal-info .title {
+dialog#book-info .principal-info .title {
   font-weight: 600;
   font-size: 1.7rem;
   margin-bottom: 5px;
 }
 
-#book-info-dialog .principal-info .author {
+dialog#book-info .principal-info .author {
   font-weight: 500;
   font-size: 1.3rem;
   margin-bottom: 5px;
 }
 
-#book-info-dialog .secondary-info {
+dialog#book-info .secondary-info {
   justify-content: center;
   gap: 10px;
   font-size: 1rem;
@@ -686,110 +686,110 @@ input[data-state="invalid"] + .validation-msg {
   margin-bottom: 30px;
 }
 
-#book-info-dialog .secondary-info p {
+dialog#book-info .secondary-info p {
   color: var(--subtext-color);
 }
 
-#book-info-dialog .actions {
+dialog#book-info .actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
 
-#book-info-dialog .dialog-buttons {
+dialog#book-info .dialog-buttons {
   align-self: end;
 }
 
-#book-info-dialog .icon-buttons {
+dialog#book-info .icon-buttons {
   display: flex;
   gap: 7px;
 }
 
-#book-info-dialog .icon-buttons span {
+dialog#book-info .icon-buttons span {
   cursor: pointer;
   position: relative;
 }
 
-#book-info-dialog span i {
+dialog#book-info span i {
   padding: 7px;
   border-radius: 10px;
   background-color: var(--card-background);
   transition: var(--hover-transition);
 }
 
-#book-info-dialog span i:hover {
+dialog#book-info span i:hover {
   background-color: var(--icon-hover);
   transition: var(--hover-transition);
 }
 
-#book-info-dialog span i:active {
+dialog#book-info span i:active {
   background-color: var(--icon-active);
   transition: var(--hover-transition);
 }
 
-#book-info-dialog i.delete {
+dialog#book-info i.delete {
   color: var(--delete-accent);
 }
 
-#book-info-dialog i.edit {
+dialog#book-info i.edit {
   color: var(--text-color);
 }
 
-#book-info-dialog .edit-icon::after {
+dialog#book-info .edit-icon::after {
   content: "Edit";
   left: 2px;
 }
 
-#book-info-dialog .delete-icon::after {
+dialog#book-info .delete-icon::after {
   content: "Delete";
   left: -8px;
 }
 
 /* Delete book dialog */
 
-#delete-book-dialog[open] {
+dialog#delete-book[open] {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#delete-book-dialog .cover {
+dialog#delete-book .cover {
   margin: 20px 0px;
   width: 100px;
 }
 
-#delete-book-dialog .cover-icon {
+dialog#delete-book .cover-icon {
   font-size: 3.5rem;
 }
 
-#delete-book-dialog .book-title {
+dialog#delete-book .book-title {
   font-size: 1.5rem;
   font-weight: 600;
 }
 
-#delete-book-dialog .book-author {
+dialog#delete-book .book-author {
   font-size: 1.2rem;
   font-weight: 500;
   color: var(--subtext-color);
 }
 
-#delete-book-dialog .dialog-buttons {
+dialog#delete-book .dialog-buttons {
   margin-top: 20px;
   align-self: end;
 }
 
-#delete-book-dialog .dialog-buttons .delete-button {
+dialog#delete-book .dialog-buttons .delete-button {
   background-color: var(--delete-accent);
   transition: var(--hover-transition);
 }
 
-#delete-book-dialog .dialog-buttons .delete-button:hover {
+dialog#delete-book .dialog-buttons .delete-button:hover {
   background-color: var(--delete-accent-hover);
   transition: var(--hover-transition);
 }
 
-#delete-book-dialog .dialog-buttons .delete-button:active {
+dialog#delete-book .dialog-buttons .delete-button:active {
   background-color: var(--delete-accent-active);
   transition: var(--hover-transition);
 }
