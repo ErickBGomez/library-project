@@ -7,11 +7,13 @@ let bookId;
 const emptyLibraryLabel = document.querySelector(".empty-library");
 const booksContainer = document.querySelector(".books-container");
 
-function Book(title, author, pages, readState) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.readState = readState;
+class Book {
+  constructor(title, author, pages, readState) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.readState = readState;
+  }
 }
 
 function InsertBookCard(book) {
