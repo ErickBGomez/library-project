@@ -13,17 +13,29 @@ function InputsFactory(dialogSelector) {
   return inputs;
 }
 
-function DialogFactory(dialogSelector) {
+function ButtonsFactory(dialogSelector, buttonNames) {
+  const buttons = {};
+
+  buttonNames.forEach((buttonName) => {
+    buttons[buttonName] = document.querySelector(
+      `dialog${dialogSelector} button.${buttonName}`
+    );
+  });
+
+  return buttons;
+}
+
+function DialogFactory(dialogSelector, buttonNames) {
   const dialog = {
     modal: document.querySelector(dialogSelector),
-    buttons: {},
+    buttons: ButtonsFactory(dialogSelector, buttonNames),
   };
 
   return dialog;
 }
 
-function DialogWithInputFactory(dialogSelector) {
-  const dialogParent = DialogFactory(dialogSelector);
+function DialogWithInputFactory(dialogSelector, buttonNames) {
+  const dialogParent = DialogFactory(dialogSelector, buttonNames);
 
   const dialogWithInput = {
     inputs: InputsFactory(dialogSelector),
@@ -32,10 +44,21 @@ function DialogWithInputFactory(dialogSelector) {
   return Object.assign({}, dialogParent, dialogWithInput);
 }
 
-export const createBook = DialogWithInputFactory("#create-book");
-export const editBook = DialogWithInputFactory("#edit-book");
-export const bookInfo = DialogFactory("#book-info");
-export const deleteBook = DialogFactory("#delete-book");
+export const createBook = DialogWithInputFactory("#create-book", [
+  "cancel",
+  "confirm",
+]);
+export const editBook = DialogWithInputFactory("#edit-book", [
+  "cancel",
+  "confirm",
+]);
+export const bookInfo = DialogFactory("#book-info", ["cancel"]);
+export const deleteBook = DialogFactory("#delete-book", ["cancel, delete"]);
+
+console.log(createBook);
+console.log(editBook);
+console.log(bookInfo);
+console.log(deleteBook);
 
 // export const createBook = {
 //   modal: document.querySelector("dialog#create-book"),

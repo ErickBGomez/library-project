@@ -631,8 +631,9 @@ input[data-state="invalid"] + .validation-msg {
   gap: 7px;
 }
 
-.confirm-button,
-.cancel-button {
+button.confirm,
+button.cancel,
+button.delete {
   width: 120px;
   height: 50px;
 }
@@ -779,17 +780,17 @@ dialog#delete-book .dialog-buttons {
   align-self: end;
 }
 
-dialog#delete-book .dialog-buttons .delete-button {
+dialog#delete-book .dialog-buttons button.delete {
   background-color: var(--delete-accent);
   transition: var(--hover-transition);
 }
 
-dialog#delete-book .dialog-buttons .delete-button:hover {
+dialog#delete-book .dialog-buttons button.delete:hover {
   background-color: var(--delete-accent-hover);
   transition: var(--hover-transition);
 }
 
-dialog#delete-book .dialog-buttons .delete-button:active {
+dialog#delete-book .dialog-buttons button.delete:active {
   background-color: var(--delete-accent-active);
   transition: var(--hover-transition);
 }
