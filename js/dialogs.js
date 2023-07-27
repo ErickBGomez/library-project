@@ -1,43 +1,33 @@
 // Dialogs
 
 function InputsFactory(dialogSelector) {
+  const dialogQuery = `dialog${dialogSelector} input${dialogSelector}`;
+
   const inputs = {
-    title: document.querySelector(
-      `${dialogSelector}-dialog input${dialogSelector}-title`
-    ),
-    author: document.querySelector(
-      `${dialogSelector}-dialog input${dialogSelector}-author`
-    ),
-    pages: document.querySelector(
-      `${dialogSelector}-dialog input${dialogSelector}-pages`
-    ),
-    readState: document.querySelector(
-      `${dialogSelector}-dialog input${dialogSelector}-read-state`
-    ),
+    title: document.querySelector(`${dialogQuery}-title`),
+    author: document.querySelector(`${dialogQuery}-author`),
+    pages: document.querySelector(`${dialogQuery}-pages`),
+    readState: document.querySelector(`${dialogQuery}-read-state`),
   };
 
   return inputs;
 }
 
 export const createBook = {
-  modal: document.querySelector("#create-book-dialog"),
+  modal: document.querySelector("dialog#create-book"),
   buttons: {
     invoke: document.querySelector(".create-book-button"),
-    cancel: document.querySelector("#create-book-dialog .cancel-button"),
-    confirm: document.querySelector("#create-book-dialog .confirm-button"),
+    cancel: document.querySelector("dialog#create-book .cancel-button"),
+    confirm: document.querySelector("dialog#create-book .confirm-button"),
   },
   inputs: {
-    title: document.querySelector(
-      "#create-book-dialog input#create-book-title"
-    ),
+    title: document.querySelector("dialog#create-book input#create-book-title"),
     author: document.querySelector(
-      "#create-book-dialog input#create-book-author"
+      "dialog#create-book input#create-book-author"
     ),
-    pages: document.querySelector(
-      "#create-book-dialog input#create-book-pages"
-    ),
+    pages: document.querySelector("dialog#create-book input#create-book-pages"),
     readState: document.querySelector(
-      "#create-book-dialog input#create-book-read-state"
+      "dialog#create-book input#create-book-read-state"
     ),
   },
 };

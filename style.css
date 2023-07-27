@@ -524,7 +524,7 @@ i.empty-library-icon {
 }
 
 .dialog-title:not(
-    #create-book-dialog .dialog-title,
+    dialog#create-book .dialog-title,
     #edit-book-dialog .dialog-title
   ) {
   align-self: start;
@@ -574,7 +574,7 @@ dialog[open]::backdrop {
 
 /* Dialog 1: Create and edit new book */
 
-#create-book-dialog[open],
+dialog#create-book[open],
 #edit-book-dialog[open] {
   display: grid;
   grid-template-columns: repeat(2, min-content);
@@ -583,18 +583,18 @@ dialog[open]::backdrop {
   row-gap: 25px;
 }
 
-#create-book-dialog .dialog-title,
+dialog#create-book .dialog-title,
 #edit-book-dialog .dialog-title {
   grid-column: 1 / -1;
 }
 
-#create-book-dialog .cover,
+dialog#create-book .cover,
 #edit-book-dialog .cover {
   height: 325px;
   align-self: center;
 }
 
-#create-book-dialog .cover-icon,
+dialog#create-book .cover-icon,
 #edit-book-dialog .cover-icon {
   font-size: 6.5rem;
 }
