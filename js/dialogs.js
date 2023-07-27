@@ -8,11 +8,17 @@ export const createBook = {
     confirm: document.querySelector("#create-book-dialog .confirm-button"),
   },
   inputs: {
-    title: document.querySelector("#create-book-dialog input#book-title"),
-    author: document.querySelector("#create-book-dialog input#book-author"),
-    pages: document.querySelector("#create-book-dialog input#book-pages"),
+    title: document.querySelector(
+      "#create-book-dialog input#create-book-title"
+    ),
+    author: document.querySelector(
+      "#create-book-dialog input#create-book-author"
+    ),
+    pages: document.querySelector(
+      "#create-book-dialog input#create-book-pages"
+    ),
     readState: document.querySelector(
-      "#create-book-dialog input#book-read-state"
+      "#create-book-dialog input#create-book-read-state"
     ),
   },
 };
