@@ -13,6 +13,19 @@ function InputsFactory(dialogSelector) {
   return inputs;
 }
 
+function OutputsFactory(dialogSelector) {
+  const outputs = {
+    title: document.querySelector(`dialog${dialogSelector} .output-title`),
+    author: document.querySelector(`dialog${dialogSelector} .output-author`),
+    pages: document.querySelector(`dialog${dialogSelector} .output-pages`),
+    readState: document.querySelector(
+      `dialog${dialogSelector} .output-read-state`
+    ),
+  };
+
+  return outputs;
+}
+
 function ButtonsFactory(dialogSelector, buttonNames) {
   const buttons = {};
 
@@ -34,7 +47,7 @@ function DialogFactory(dialogSelector, buttonNames) {
   return dialog;
 }
 
-function DialogWithInputFactory(dialogSelector, buttonNames) {
+function InputDialogFactory(dialogSelector, buttonNames) {
   const dialogParent = DialogFactory(dialogSelector, buttonNames);
 
   const dialogWithInput = {
@@ -44,16 +57,25 @@ function DialogWithInputFactory(dialogSelector, buttonNames) {
   return Object.assign({}, dialogParent, dialogWithInput);
 }
 
-export const createBook = DialogWithInputFactory("#create-book", [
+function OutputDialogFactory(dialogSelector, buttonNames) {
+  const dialogParent = DialogFactory(dialogSelector, buttonNames);
+
+  const dialogWithOutput = {
+    outputs: OutputsFactory(dialogSelector),
+  };
+
+  return Object.assign({}, dialogParent, dialogWithOutput);
+}
+
+export const createBook = InputDialogFactory("#create-book", [
   "cancel",
   "confirm",
 ]);
-export const editBook = DialogWithInputFactory("#edit-book", [
-  "cancel",
-  "confirm",
+export const editBook = InputDialogFactory("#edit-book", ["cancel", "confirm"]);
+export const bookInfo = OutputDialogFactory("#book-info", ["cancel"]);
+export const deleteBook = OutputDialogFactory("#delete-book", [
+  "cancel, delete",
 ]);
-export const bookInfo = DialogFactory("#book-info", ["cancel"]);
-export const deleteBook = DialogFactory("#delete-book", ["cancel, delete"]);
 
 console.log(createBook);
 console.log(editBook);

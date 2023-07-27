@@ -667,13 +667,13 @@ dialog#book-info .principal-info {
   color: var(--text-color);
 }
 
-dialog#book-info .principal-info .title {
+dialog#book-info .principal-info .output-title {
   font-weight: 600;
   font-size: 1.7rem;
   margin-bottom: 5px;
 }
 
-dialog#book-info .principal-info .author {
+dialog#book-info .principal-info .output-author {
   font-weight: 500;
   font-size: 1.3rem;
   margin-bottom: 5px;
@@ -764,12 +764,12 @@ dialog#delete-book .cover-icon {
   font-size: 3.5rem;
 }
 
-dialog#delete-book .book-title {
+dialog#delete-book .output-title {
   font-size: 1.5rem;
   font-weight: 600;
 }
 
-dialog#delete-book .book-author {
+dialog#delete-book .output-author {
   font-size: 1.2rem;
   font-weight: 500;
   color: var(--subtext-color);
