@@ -67,6 +67,10 @@ function OutputDialogFactory(dialogSelector, buttonNames) {
   return Object.assign({}, dialogParent, dialogWithOutput);
 }
 
+function DefineInvokeElement(dialogObject, invokeNode) {
+  dialogObject.invokeElement = invokeNode;
+}
+
 export const createBook = InputDialogFactory("#create-book", [
   "cancel",
   "confirm",
@@ -74,32 +78,23 @@ export const createBook = InputDialogFactory("#create-book", [
 export const editBook = InputDialogFactory("#edit-book", ["cancel", "confirm"]);
 export const bookInfo = OutputDialogFactory("#book-info", ["cancel"]);
 export const deleteBook = OutputDialogFactory("#delete-book", [
-  "cancel, delete",
+  "cancel",
+  "delete",
 ]);
+
+const invokeCreateBookButton = document.querySelector(
+  "button.create-book-button"
+);
+
+DefineInvokeElement(createBook, invokeCreateBookButton);
+DefineInvokeElement(editBook);
+DefineInvokeElement(bookInfo);
+DefineInvokeElement(deleteBook);
 
 console.log(createBook);
 console.log(editBook);
 console.log(bookInfo);
 console.log(deleteBook);
-
-// export const createBook = {
-//   modal: document.querySelector("dialog#create-book"),
-//   buttons: {
-//     invoke: document.querySelector(".create-book-button"),
-//     cancel: document.querySelector("dialog#create-book .cancel-button"),
-//     confirm: document.querySelector("dialog#create-book .confirm-button"),
-//   },
-//   inputs: {
-//     title: document.querySelector("dialog#create-book input#create-book-title"),
-//     author: document.querySelector(
-//       "dialog#create-book input#create-book-author"
-//     ),
-//     pages: document.querySelector("dialog#create-book input#create-book-pages"),
-//     readState: document.querySelector(
-//       "dialog#create-book input#create-book-read-state"
-//     ),
-//   },
-// };
 
 // export const bookInfo = {
 //   info: {
@@ -203,7 +198,7 @@ function InvokeEditBook(book) {
 }
 
 // Create book events
-createBook.buttons.invoke.addEventListener("click", () =>
+createBook.invokeElement.addEventListener("click", () =>
   InvokeModal(createBook)
 );
 createBook.buttons.cancel.addEventListener("click", () =>
