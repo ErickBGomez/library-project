@@ -3,10 +3,10 @@ import {
   SetCustomValidity,
   CustomSubmit,
 } from "./inputValidation.js";
-import { AddBook } from "./books.js";
+import { AddBook, EditBook } from "./books.js";
 
-// Dialogs
-const invokeCreateBookButton = document.querySelector(
+// Invoke dialogs
+const invokeCreateBookNode = document.querySelector(
   "button.create-book-button"
 );
 
@@ -106,6 +106,10 @@ const deleteBook = new Dialog("#delete-book", ["cancel", "delete"]);
 createBook.inputs = InputsFactory(createBook);
 editBook.inputs = InputsFactory(editBook);
 
+// Unique properties
+bookInfo.currentBook = null;
+bookInfo.currentIndex = null;
+
 // Submit callbacks
 createBook.submitCallback = function () {
   AddBook(
@@ -116,14 +120,22 @@ createBook.submitCallback = function () {
   );
 };
 
+editBook.submitCallback = function () {
+  EditBook(
+    editBook.currentIndex,
+    editBook.inputs.title.value,
+    editBook.inputs.author.value,
+    editBook.inputs.pages.value,
+    editBook.inputs.readState.checked
+  );
+};
+
 // Output Mixins
 bookInfo.outputs = OutputsFactory(bookInfo);
 deleteBook.outputs = OutputsFactory(deleteBook);
 
 // Set invoke elements
-createBook.invoke = invokeCreateBookButton;
-editBook.invoke = console.log(createBook);
-console.log(deleteBook);
+createBook.invoke = invokeCreateBookNode;
 
 // Functions
 
