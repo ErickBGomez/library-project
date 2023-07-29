@@ -1,6 +1,6 @@
-import { ValidateInput } from "./inputValidation.js";
-// Dialogs
+import { ValidateInput, SetCustomValidity } from "./inputValidation.js";
 
+// Dialogs
 const invokeCreateBookButton = document.querySelector(
   "button.create-book-button"
 );
@@ -15,6 +15,7 @@ function InputsFactory(dialog) {
 
   for (const e in inputs) {
     if (e === "readState") break;
+    inputs[e].customValidate = SetCustomValidity;
     inputs[e].addEventListener("input", ValidateInput);
   }
 
@@ -37,7 +38,7 @@ function ButtonsFactory(dialog, buttonNames) {
     buttons[buttonName] = dialog.querySelector(`button.${buttonName}`);
 
     if (buttonName === "cancel") {
-      buttons[buttonName].addEventListener("click", dialog.CloseModal);
+      buttons[buttonName].addEventListener("click", () => dialog.close());
     }
   });
 
@@ -71,10 +72,6 @@ class Dialog {
     this.modal.showModal();
   };
 
-  CloseModal = () => {
-    this.modal.close();
-  };
-
   set invoke(node) {
     this._invoke = node;
 
@@ -97,8 +94,7 @@ deleteBook.outputs = OutputsFactory(deleteBook.modal);
 
 // Set invoke elements
 createBook.invoke = invokeCreateBookButton;
-
-console.log(createBook);
+editBook.invoke = console.log(createBook);
 console.log(deleteBook);
 
 // Functions
@@ -135,18 +131,6 @@ function InvokeEditBook(book) {
   editBook.inputs.readState.checked = book.readState;
 }
 
-// Create book events
-
-createBook.buttons.cancel.addEventListener("click", () =>
-  createBook.modal.close()
-);
-// Open book events
-bookInfo.buttons.cancel.addEventListener("click", () => bookInfo.modal.close());
-
-// Delete book events
-deleteBook.buttons.cancel.addEventListener("click", () =>
-  deleteBook.modal.close()
-);
 deleteBook.buttons.invoke.addEventListener("click", () => {
   InvokeDeleteBook(bookInfo.info.currentBook);
 });
@@ -155,4 +139,3 @@ deleteBook.buttons.invoke.addEventListener("click", () => {
 editBook.buttons.invoke.addEventListener("click", () =>
   InvokeEditBook(bookInfo.info.currentBook)
 );
-editBook.buttons.cancel.addEventListener("click", () => editBook.modal.close());

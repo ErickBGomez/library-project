@@ -5,17 +5,15 @@ const createBookForm = document.querySelector("form#create-book-form");
 const editBookForm = document.querySelector("form#edit-book-form");
 const numbersRegex = /^\d+$/;
 
-function SetCustomValidity(inputElement, message) {
-  const validationMsg = inputElement.parentElement.querySelector(
-    "span.validation-msg"
-  );
+export function SetCustomValidity(message) {
+  const validationMsg = this.parentElement.querySelector("span.validation-msg");
 
   if (!message) {
-    inputElement.dataset.state = "valid";
+    this.dataset.state = "valid";
     return;
   }
 
-  inputElement.dataset.state = "invalid";
+  this.dataset.state = "invalid";
   validationMsg.innerText = `* ${message}`;
 }
 
@@ -23,11 +21,11 @@ export function ValidateInput() {
   if (this.type === "checkbox") return;
 
   if (!this.value) {
-    SetCustomValidity(this, "Field cannot be empty");
+    this.customValidate("Field cannot be empty");
   } else if (this.type === "tel" && !numbersRegex.test(this.value)) {
-    SetCustomValidity(this, "Field can only contain numbers");
+    this.customValidate("Field can only contain numbers");
   } else {
-    SetCustomValidity(this);
+    this.customValidate();
   }
 }
 
