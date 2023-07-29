@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 // Dialogs
 
 const invokeCreateBookButton = document.querySelector(
@@ -77,33 +76,20 @@ class Dialog {
   }
 }
 
-class DialogInput extends Dialog {
-  constructor(dialogSelector, buttonNames) {
-    super(dialogSelector, buttonNames);
+export const createBook = new Dialog("#create-book", ["cancel", "confirm"]);
+export const editBook = new Dialog("#edit-book", ["cancel", "confirm"]);
+export const bookInfo = new Dialog("#book-info", ["cancel"]);
+export const deleteBook = new Dialog("#delete-book", ["cancel", "delete"]);
 
-    this.inputs = InputsFactory(dialogSelector);
-  }
-}
+// Input Mixins
+createBook.inputs = InputsFactory("#create-book");
+editBook.inputs = InputsFactory("#edit-book");
 
-class DialogOutput extends Dialog {
-  constructor(dialogSelector, buttonNames) {
-    super(dialogSelector, buttonNames);
+// Output Mixins
+bookInfo.outputs = OutputsFactory("#book-info");
+deleteBook.outputs = OutputsFactory("#delete-book");
 
-    this.outputs = OutputsFactory(dialogSelector);
-  }
-}
-
-export const createBook = new DialogInput("#create-book", [
-  "cancel",
-  "confirm",
-]);
-export const editBook = new DialogInput("#edit-book", ["cancel", "confirm"]);
-export const bookInfo = new DialogOutput("#book-info", ["cancel"]);
-export const deleteBook = new DialogOutput("#delete-book", [
-  "cancel",
-  "delete",
-]);
-
+// Set invoke elements
 createBook.invoke = invokeCreateBookButton;
 
 console.log(createBook);
