@@ -1,4 +1,9 @@
+/* eslint-disable max-classes-per-file */
 // Dialogs
+
+const invokeCreateBookButton = document.querySelector(
+  "button.create-book-button"
+);
 
 function InputsFactory(dialogSelector) {
   const dialogQuery = `dialog${dialogSelector} input${dialogSelector}`;
@@ -36,95 +41,49 @@ function ButtonsFactory(dialogSelector, buttonNames) {
   return buttons;
 }
 
-function DialogFactory(dialogSelector, buttonNames) {
-  const modal = document.querySelector(dialogSelector);
-  const buttons = ButtonsFactory(dialogSelector, buttonNames);
+class Dialog {
+  constructor(dialogSelector, buttonNames) {
+    this.modal = document.querySelector(dialogSelector);
+    this.buttons = ButtonsFactory(dialogSelector, buttonNames);
+  }
 
-  return { modal, buttons };
+  set invoke(node) {
+    this._invoke = node;
+
+    node.addEventListener("click", () => console.log("a"));
+  }
 }
 
-function InputDialogFactory(dialogSelector, buttonNames) {
-  const dialogParent = DialogFactory(dialogSelector, buttonNames);
+class DialogInput extends Dialog {
+  constructor(dialogSelector, buttonNames) {
+    super(dialogSelector, buttonNames);
 
-  const inputs = InputsFactory(dialogSelector);
-
-  return Object.assign({}, dialogParent, { inputs });
+    this.inputs = InputsFactory(dialogSelector);
+  }
 }
 
-function OutputDialogFactory(dialogSelector, buttonNames) {
-  const dialogParent = DialogFactory(dialogSelector, buttonNames);
+class DialogOutput extends Dialog {
+  constructor(dialogSelector, buttonNames) {
+    super(dialogSelector, buttonNames);
 
-  const outputs = OutputsFactory(dialogSelector);
-
-  return Object.assign({}, dialogParent, { outputs });
+    this.outputs = OutputsFactory(dialogSelector);
+  }
 }
 
-export const createBook = InputDialogFactory("#create-book", [
+export const createBook = new DialogInput("#create-book", [
   "cancel",
   "confirm",
 ]);
-export const editBook = InputDialogFactory("#edit-book", ["cancel", "confirm"]);
-export const bookInfo = OutputDialogFactory("#book-info", ["cancel"]);
-export const deleteBook = OutputDialogFactory("#delete-book", [
+export const editBook = new DialogInput("#edit-book", ["cancel", "confirm"]);
+export const bookInfo = new DialogOutput("#book-info", ["cancel"]);
+export const deleteBook = new DialogOutput("#delete-book", [
   "cancel",
   "delete",
 ]);
 
-const invokeCreateBookButton = document.querySelector(
-  "button.create-book-button"
-);
+createBook.invoke = invokeCreateBookButton;
 
 console.log(createBook);
-// console.log(editBook);
-// console.log(bookInfo);
-// console.log(deleteBook);
-
-// export const bookInfo = {
-//   info: {
-//     currentBook: null,
-//     currentIndex: null,
-//   },
-//   modal: document.querySelector("dialog#book-info"),
-//   buttons: {
-//     cancel: document.querySelector("dialog#book-info .cancel-button"),
-//   },
-//   elements: {
-//     title: document.querySelector("dialog#book-info .title"),
-//     author: document.querySelector("dialog#book-info .author"),
-//     pages: document.querySelector("dialog#book-info .pages"),
-//     readState: document.querySelector("dialog#book-info .read-state"),
-//   },
-// };
-
-// export const deleteBook = {
-//   modal: document.querySelector("dialog#delete-book"),
-//   buttons: {
-//     invoke: document.querySelector("dialog#book-info .delete-icon"),
-//     cancel: document.querySelector("dialog#delete-book .cancel-button"),
-//     delete: document.querySelector("dialog#delete-book .delete-button"),
-//   },
-//   elements: {
-//     title: document.querySelector("dialog#delete-book .book-title"),
-//     author: document.querySelector("dialog#delete-book .book-author"),
-//   },
-// };
-
-// export const editBook = {
-//   modal: document.querySelector("dialog#edit-book"),
-//   buttons: {
-//     invoke: document.querySelector("dialog#book-info .edit-icon"),
-//     cancel: document.querySelector("dialog#edit-book .cancel-button"),
-//     confirm: document.querySelector("dialog#edit-book .confirm-button"),
-//   },
-//   inputs: {
-//     title: document.querySelector("dialog#edit-book input#edit-book-title"),
-//     author: document.querySelector("dialog#edit-book input#edit-book-author"),
-//     pages: document.querySelector("dialog#edit-book input#edit-book-pages"),
-//     readState: document.querySelector(
-//       "dialog#edit-book input#edit-book-read-state"
-//     ),
-//   },
-// };
 
 // Functions
 function ClearInputs(dialogObject) {
