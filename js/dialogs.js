@@ -3,7 +3,7 @@ import {
   SetCustomValidity,
   CustomSubmit,
 } from "./inputValidation.js";
-import { AddBook, EditBook } from "./books.js";
+import { bookCards, AddBook, EditBook } from "./books.js";
 
 // Invoke dialogs
 const invokeCreateBookNode = document.querySelector(
@@ -93,7 +93,13 @@ class Dialog {
   set invoke(node) {
     this._invoke = node;
 
-    node.addEventListener("click", this.InvokeModal);
+    if (Array.isArray(node)) {
+      node.forEach((n) => {
+        n.addEventListener("click", this.InvokeModal);
+      });
+    } else {
+      node.addEventListener("click", this.InvokeModal);
+    }
   }
 }
 
@@ -118,6 +124,8 @@ createBook.submitCallback = function () {
     createBook.inputs.pages.value,
     createBook.inputs.readState.checked
   );
+
+  bookInfo.invoke = bookCards;
 };
 
 editBook.submitCallback = function () {
@@ -136,6 +144,9 @@ deleteBook.outputs = OutputsFactory(deleteBook);
 
 // Set invoke elements
 createBook.invoke = invokeCreateBookNode;
+bookInfo.invoke = bookCards;
+
+console.log(bookInfo);
 
 // Functions
 

@@ -1,5 +1,5 @@
 const books = [];
-let bookCards = [];
+export let bookCards = [];
 let bookId;
 
 const emptyLibraryLabel = document.querySelector(".empty-library");
@@ -43,13 +43,7 @@ function RefreshBooks() {
       bookId++;
     });
 
-    bookCards = document.querySelectorAll(".book-card");
-
-    bookCards.forEach((bookCard, index) => {
-      bookCard.addEventListener("click", () =>
-        InvokeBookInfo(books[index], index)
-      );
-    });
+    bookCards = Array.from(document.querySelectorAll(".book-card"));
   } else {
     emptyLibraryLabel.style.display = "block";
   }
