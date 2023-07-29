@@ -1,3 +1,4 @@
+import { ValidateInput } from "./inputValidation.js";
 // Dialogs
 
 const invokeCreateBookButton = document.querySelector(
@@ -7,25 +8,30 @@ const invokeCreateBookButton = document.querySelector(
 function InputsFactory(dialogSelector) {
   const dialogQuery = `dialog${dialogSelector} input${dialogSelector}`;
 
-  const title = document.querySelector(`${dialogQuery}-title`);
-  const author = document.querySelector(`${dialogQuery}-author`);
-  const pages = document.querySelector(`${dialogQuery}-pages`);
-  const readState = document.querySelector(`${dialogQuery}-read-state`);
+  const inputs = {
+    title: document.querySelector(`${dialogQuery}-title`),
+    author: document.querySelector(`${dialogQuery}-author`),
+    pages: document.querySelector(`${dialogQuery}-pages`),
+    readState: document.querySelector(`${dialogQuery}-read-state`),
+  };
 
-  return { title, author, pages, readState };
+  for (const e in inputs) {
+    if (e === "readState") break;
+    inputs[e].addEventListener("input", ValidateInput);
+  }
+
+  return inputs;
 }
 
 function OutputsFactory(dialogSelector) {
-  const title = document.querySelector(`dialog${dialogSelector} .output-title`);
-  const author = document.querySelector(
-    `dialog${dialogSelector} .output-author`
-  );
-  const pages = document.querySelector(`dialog${dialogSelector} .output-pages`);
-  const readState = document.querySelector(
-    `dialog${dialogSelector} .output-read-state`
-  );
-
-  return { title, author, pages, readState };
+  return {
+    title: document.querySelector(`dialog${dialogSelector} .output-title`),
+    author: document.querySelector(`dialog${dialogSelector} .output-author`),
+    pages: document.querySelector(`dialog${dialogSelector} .output-pages`),
+    readState: document.querySelector(
+      `dialog${dialogSelector} .output-read-state`
+    ),
+  };
 }
 
 function ButtonsFactory(dialogSelector, buttonNames) {
@@ -41,8 +47,6 @@ function ButtonsFactory(dialogSelector, buttonNames) {
 }
 
 class Dialog {
-  modal;
-
   constructor(dialogSelector, buttonNames) {
     this.modal = document.querySelector(dialogSelector);
     this.buttons = ButtonsFactory(dialogSelector, buttonNames);

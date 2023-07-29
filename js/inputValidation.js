@@ -19,15 +19,15 @@ function SetCustomValidity(inputElement, message) {
   validationMsg.innerText = `* ${message}`;
 }
 
-function ValidateInput(input) {
-  if (input.type === "checkbox") return;
+export function ValidateInput() {
+  if (this.type === "checkbox") return;
 
-  if (!input.value) {
-    SetCustomValidity(input, "Field cannot be empty");
-  } else if (input.type === "tel" && !numbersRegex.test(input.value)) {
-    SetCustomValidity(input, "Field can only contain numbers");
+  if (!this.value) {
+    SetCustomValidity(this, "Field cannot be empty");
+  } else if (this.type === "tel" && !numbersRegex.test(this.value)) {
+    SetCustomValidity(this, "Field can only contain numbers");
   } else {
-    SetCustomValidity(input);
+    SetCustomValidity(this);
   }
 }
 
@@ -88,8 +88,8 @@ function ValidateDialogInputs(dialogObject) {
   }
 }
 
-ValidateDialogInputs(createBook);
-ValidateDialogInputs(editBook);
+// ValidateDialogInputs(createBook);
+// ValidateDialogInputs(editBook);
 
 createBookForm.addEventListener("submit", (e) =>
   CustomSubmit(e, createBook, AddBookCallback)
