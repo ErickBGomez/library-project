@@ -1,6 +1,3 @@
-import { bookInfo, createBook, editBook } from "./dialogs.js";
-import { AddBook, EditBook } from "./books.js";
-
 const createBookForm = document.querySelector("form#create-book-form");
 const editBookForm = document.querySelector("form#edit-book-form");
 const numbersRegex = /^\d+$/;
@@ -63,7 +60,3 @@ export function CustomSubmit(e, callback) {
     e.target.submit();
   }
 }
-
-editBookForm.addEventListener("submit", (e) =>
-  CustomSubmit(e, editBook, EditBookCallback)
-);

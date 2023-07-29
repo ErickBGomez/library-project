@@ -97,10 +97,10 @@ class Dialog {
   }
 }
 
-export const createBook = new Dialog("#create-book", ["cancel", "confirm"]);
-export const editBook = new Dialog("#edit-book", ["cancel", "confirm"]);
-export const bookInfo = new Dialog("#book-info", ["cancel"]);
-export const deleteBook = new Dialog("#delete-book", ["cancel", "delete"]);
+const createBook = new Dialog("#create-book", ["cancel", "confirm"]);
+const editBook = new Dialog("#edit-book", ["cancel", "confirm"]);
+const bookInfo = new Dialog("#book-info", ["cancel"]);
+const deleteBook = new Dialog("#delete-book", ["cancel", "delete"]);
 
 // Input Mixins
 createBook.inputs = InputsFactory(createBook);

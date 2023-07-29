@@ -1,5 +1,3 @@
-import { deleteBook, bookInfo, InvokeBookInfo } from "./dialogs.js";
-
 const books = [];
 let bookCards = [];
 let bookId;
