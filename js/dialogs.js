@@ -3,27 +3,25 @@
 function InputsFactory(dialogSelector) {
   const dialogQuery = `dialog${dialogSelector} input${dialogSelector}`;
 
-  const inputs = {
-    title: document.querySelector(`${dialogQuery}-title`),
-    author: document.querySelector(`${dialogQuery}-author`),
-    pages: document.querySelector(`${dialogQuery}-pages`),
-    readState: document.querySelector(`${dialogQuery}-read-state`),
-  };
+  const title = document.querySelector(`${dialogQuery}-title`);
+  const author = document.querySelector(`${dialogQuery}-author`);
+  const pages = document.querySelector(`${dialogQuery}-pages`);
+  const readState = document.querySelector(`${dialogQuery}-read-state`);
 
-  return inputs;
+  return { title, author, pages, readState };
 }
 
 function OutputsFactory(dialogSelector) {
-  const outputs = {
-    title: document.querySelector(`dialog${dialogSelector} .output-title`),
-    author: document.querySelector(`dialog${dialogSelector} .output-author`),
-    pages: document.querySelector(`dialog${dialogSelector} .output-pages`),
-    readState: document.querySelector(
-      `dialog${dialogSelector} .output-read-state`
-    ),
-  };
+  const title = document.querySelector(`dialog${dialogSelector} .output-title`);
+  const author = document.querySelector(
+    `dialog${dialogSelector} .output-author`
+  );
+  const pages = document.querySelector(`dialog${dialogSelector} .output-pages`);
+  const readState = document.querySelector(
+    `dialog${dialogSelector} .output-read-state`
+  );
 
-  return outputs;
+  return { title, author, pages, readState };
 }
 
 function ButtonsFactory(dialogSelector, buttonNames) {
@@ -39,36 +37,26 @@ function ButtonsFactory(dialogSelector, buttonNames) {
 }
 
 function DialogFactory(dialogSelector, buttonNames) {
-  const dialog = {
-    modal: document.querySelector(dialogSelector),
-    buttons: ButtonsFactory(dialogSelector, buttonNames),
-  };
+  const modal = document.querySelector(dialogSelector);
+  const buttons = ButtonsFactory(dialogSelector, buttonNames);
 
-  return dialog;
+  return { modal, buttons };
 }
 
 function InputDialogFactory(dialogSelector, buttonNames) {
   const dialogParent = DialogFactory(dialogSelector, buttonNames);
 
-  const dialogWithInput = {
-    inputs: InputsFactory(dialogSelector),
-  };
+  const inputs = InputsFactory(dialogSelector);
 
-  return Object.assign({}, dialogParent, dialogWithInput);
+  return Object.assign({}, dialogParent, { inputs });
 }
 
 function OutputDialogFactory(dialogSelector, buttonNames) {
   const dialogParent = DialogFactory(dialogSelector, buttonNames);
 
-  const dialogWithOutput = {
-    outputs: OutputsFactory(dialogSelector),
-  };
+  const outputs = OutputsFactory(dialogSelector);
 
-  return Object.assign({}, dialogParent, dialogWithOutput);
-}
-
-function DefineInvokeElement(dialogObject, invokeNode) {
-  dialogObject.invokeElement = invokeNode;
+  return Object.assign({}, dialogParent, { outputs });
 }
 
 export const createBook = InputDialogFactory("#create-book", [
@@ -86,15 +74,10 @@ const invokeCreateBookButton = document.querySelector(
   "button.create-book-button"
 );
 
-DefineInvokeElement(createBook, invokeCreateBookButton);
-DefineInvokeElement(editBook);
-DefineInvokeElement(bookInfo);
-DefineInvokeElement(deleteBook);
-
 console.log(createBook);
-console.log(editBook);
-console.log(bookInfo);
-console.log(deleteBook);
+// console.log(editBook);
+// console.log(bookInfo);
+// console.log(deleteBook);
 
 // export const bookInfo = {
 //   info: {
