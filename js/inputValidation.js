@@ -29,15 +29,6 @@ export function ValidateInput() {
   }
 }
 
-function AddBookCallback() {
-  AddBook(
-    createBook.inputs.title.value,
-    createBook.inputs.author.value,
-    createBook.inputs.pages.value,
-    createBook.inputs.readState.checked
-  );
-}
-
 function EditBookCallback() {
   EditBook(
     bookInfo.info.currentIndex,
@@ -48,16 +39,17 @@ function EditBookCallback() {
   );
 }
 
-function CustomSubmit(e, dialogObject, callback) {
+export function CustomSubmit(e, callback) {
   e.preventDefault();
 
   // Count invalid inputs
   let invalidInputs = 0;
 
-  for (const input in dialogObject.inputs) {
-    const currentInput = dialogObject.inputs[input];
+  for (const input in this.inputs) {
+    if (input === "readState") break;
+    const currentInput = this.inputs[input];
 
-    ValidateInput(currentInput);
+    currentInput.validate();
 
     if (currentInput.dataset.state === "invalid") {
       invalidInputs++;
@@ -72,9 +64,6 @@ function CustomSubmit(e, dialogObject, callback) {
   }
 }
 
-createBookForm.addEventListener("submit", (e) =>
-  CustomSubmit(e, createBook, AddBookCallback)
-);
 editBookForm.addEventListener("submit", (e) =>
   CustomSubmit(e, editBook, EditBookCallback)
 );

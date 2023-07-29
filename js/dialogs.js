@@ -1,4 +1,9 @@
-import { ValidateInput, SetCustomValidity } from "./inputValidation.js";
+import {
+  ValidateInput,
+  SetCustomValidity,
+  CustomSubmit,
+} from "./inputValidation.js";
+import { AddBook } from "./books.js";
 
 // Dialogs
 const invokeCreateBookButton = document.querySelector(
@@ -6,28 +11,41 @@ const invokeCreateBookButton = document.querySelector(
 );
 
 function InputsFactory(dialog) {
+  const modal = dialog.modal;
+  const form = modal.querySelector("form");
+
   const inputs = {
-    title: dialog.querySelector(`input#${dialog.id}-title`),
-    author: dialog.querySelector(`input#${dialog.id}-author`),
-    pages: dialog.querySelector(`input#${dialog.id}-pages`),
-    readState: dialog.querySelector(`input#${dialog.id}-read-state`),
+    title: modal.querySelector(`input#${modal.id}-title`),
+    author: modal.querySelector(`input#${modal.id}-author`),
+    pages: modal.querySelector(`input#${modal.id}-pages`),
+    readState: modal.querySelector(`input#${modal.id}-read-state`),
   };
 
   for (const e in inputs) {
     if (e === "readState") break;
     inputs[e].customValidate = SetCustomValidity;
-    inputs[e].addEventListener("input", ValidateInput);
+    inputs[e].validate = ValidateInput;
+    inputs[e].addEventListener("input", inputs[e].validate);
   }
+
+  dialog.customSubmit = CustomSubmit;
+  dialog.submitCallback = null;
+
+  form.addEventListener("submit", (e) =>
+    dialog.customSubmit(e, dialog.submitCallback)
+  );
 
   return inputs;
 }
 
 function OutputsFactory(dialog) {
+  const modal = dialog.modal;
+
   return {
-    title: dialog.querySelector(".output-title"),
-    author: dialog.querySelector(".output-author"),
-    pages: dialog.querySelector(".output-pages"),
-    readState: dialog.querySelector(".output-read-state"),
+    title: modal.querySelector(".output-title"),
+    author: modal.querySelector(".output-author"),
+    pages: modal.querySelector(".output-pages"),
+    readState: modal.querySelector(".output-read-state"),
   };
 }
 
@@ -85,12 +103,22 @@ export const bookInfo = new Dialog("#book-info", ["cancel"]);
 export const deleteBook = new Dialog("#delete-book", ["cancel", "delete"]);
 
 // Input Mixins
-createBook.inputs = InputsFactory(createBook.modal);
-editBook.inputs = InputsFactory(editBook.modal);
+createBook.inputs = InputsFactory(createBook);
+editBook.inputs = InputsFactory(editBook);
+
+// Submit callbacks
+createBook.submitCallback = function () {
+  AddBook(
+    createBook.inputs.title.value,
+    createBook.inputs.author.value,
+    createBook.inputs.pages.value,
+    createBook.inputs.readState.checked
+  );
+};
 
 // Output Mixins
-bookInfo.outputs = OutputsFactory(bookInfo.modal);
-deleteBook.outputs = OutputsFactory(deleteBook.modal);
+bookInfo.outputs = OutputsFactory(bookInfo);
+deleteBook.outputs = OutputsFactory(deleteBook);
 
 // Set invoke elements
 createBook.invoke = invokeCreateBookButton;

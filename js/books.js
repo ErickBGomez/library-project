@@ -45,8 +45,6 @@ function RefreshBooks() {
       bookId++;
     });
 
-    // books[bookCard.dataset.bookid]
-
     bookCards = document.querySelectorAll(".book-card");
 
     bookCards.forEach((bookCard, index) => {
@@ -60,6 +58,7 @@ function RefreshBooks() {
 }
 
 export function AddBook(title, author, pages, readState) {
+  // Cannot access Book before initialization
   const newBook = new Book(title, author, pages, readState);
   books.push(newBook);
 
@@ -85,10 +84,10 @@ export function EditBook(index, title, author, pages, readState) {
 RefreshBooks();
 
 // Events
-deleteBook.buttons.delete.addEventListener("click", () => {
-  DeleteBook(bookInfo.info.currentIndex);
-  RefreshBooks();
+// deleteBook.buttons.delete.addEventListener("click", () => {
+//   DeleteBook(bookInfo.info.currentIndex);
+//   RefreshBooks();
 
-  deleteBook.modal.close();
-  bookInfo.modal.close();
-});
+//   deleteBook.modal.close();
+//   bookInfo.modal.close();
+// });
