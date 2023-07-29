@@ -42,15 +42,38 @@ function ButtonsFactory(dialogSelector, buttonNames) {
 }
 
 class Dialog {
+  modal;
+
   constructor(dialogSelector, buttonNames) {
     this.modal = document.querySelector(dialogSelector);
     this.buttons = ButtonsFactory(dialogSelector, buttonNames);
   }
 
+  ClearInputs = () => {
+    const inputsArray = Array.from(this.modal.querySelectorAll("input"));
+
+    for (const input of inputsArray) {
+      if (input.type !== "checkbox") {
+        input.value = "";
+        input.dataset.state = "valid";
+      } else {
+        input.checked = false;
+      }
+    }
+  };
+
+  InvokeModal = () => {
+    if ("inputs" in this) {
+      this.ClearInputs();
+    }
+
+    this.modal.showModal();
+  };
+
   set invoke(node) {
     this._invoke = node;
 
-    node.addEventListener("click", () => console.log("a"));
+    node.addEventListener("click", this.InvokeModal);
   }
 }
 
@@ -86,26 +109,6 @@ createBook.invoke = invokeCreateBookButton;
 console.log(createBook);
 
 // Functions
-function ClearInputs(dialogObject) {
-  const inputsArray = Array.from(dialogObject.modal.querySelectorAll("input"));
-
-  for (const input of inputsArray) {
-    if (input.type !== "checkbox") {
-      input.value = "";
-      input.dataset.state = "valid";
-    } else {
-      input.checked = false;
-    }
-  }
-}
-
-export function InvokeModal(dialogObject) {
-  if ("inputs" in dialogObject) {
-    ClearInputs(dialogObject);
-  }
-
-  dialogObject.modal.showModal();
-}
 
 export function InvokeBookInfo(book, index) {
   // Object info
@@ -140,9 +143,7 @@ function InvokeEditBook(book) {
 }
 
 // Create book events
-createBook.invokeElement.addEventListener("click", () =>
-  InvokeModal(createBook)
-);
+
 createBook.buttons.cancel.addEventListener("click", () =>
   createBook.modal.close()
 );
