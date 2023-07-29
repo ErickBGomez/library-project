@@ -74,23 +74,6 @@ function CustomSubmit(e, dialogObject, callback) {
   }
 }
 
-// Add event to every input
-
-function ValidateDialogInputs(dialogObject) {
-  for (const input in dialogObject.inputs) {
-    const currentInput = dialogObject.inputs[input];
-
-    if (currentInput.type !== "checkbox") {
-      currentInput.addEventListener("input", () => {
-        ValidateInput(currentInput);
-      });
-    }
-  }
-}
-
-// ValidateDialogInputs(createBook);
-// ValidateDialogInputs(editBook);
-
 createBookForm.addEventListener("submit", (e) =>
   CustomSubmit(e, createBook, AddBookCallback)
 );

@@ -5,14 +5,12 @@ const invokeCreateBookButton = document.querySelector(
   "button.create-book-button"
 );
 
-function InputsFactory(dialogSelector) {
-  const dialogQuery = `dialog${dialogSelector} input${dialogSelector}`;
-
+function InputsFactory(dialog) {
   const inputs = {
-    title: document.querySelector(`${dialogQuery}-title`),
-    author: document.querySelector(`${dialogQuery}-author`),
-    pages: document.querySelector(`${dialogQuery}-pages`),
-    readState: document.querySelector(`${dialogQuery}-read-state`),
+    title: dialog.querySelector(`input#${dialog.id}-title`),
+    author: dialog.querySelector(`input#${dialog.id}-author`),
+    pages: dialog.querySelector(`input#${dialog.id}-pages`),
+    readState: dialog.querySelector(`input#${dialog.id}-read-state`),
   };
 
   for (const e in inputs) {
@@ -23,24 +21,24 @@ function InputsFactory(dialogSelector) {
   return inputs;
 }
 
-function OutputsFactory(dialogSelector) {
+function OutputsFactory(dialog) {
   return {
-    title: document.querySelector(`dialog${dialogSelector} .output-title`),
-    author: document.querySelector(`dialog${dialogSelector} .output-author`),
-    pages: document.querySelector(`dialog${dialogSelector} .output-pages`),
-    readState: document.querySelector(
-      `dialog${dialogSelector} .output-read-state`
-    ),
+    title: dialog.querySelector(".output-title"),
+    author: dialog.querySelector(".output-author"),
+    pages: dialog.querySelector(".output-pages"),
+    readState: dialog.querySelector(".output-read-state"),
   };
 }
 
-function ButtonsFactory(dialogSelector, buttonNames) {
+function ButtonsFactory(dialog, buttonNames) {
   const buttons = {};
 
   buttonNames.forEach((buttonName) => {
-    buttons[buttonName] = document.querySelector(
-      `dialog${dialogSelector} button.${buttonName}`
-    );
+    buttons[buttonName] = dialog.querySelector(`button.${buttonName}`);
+
+    if (buttonName === "cancel") {
+      buttons[buttonName].addEventListener("click", dialog.CloseModal);
+    }
   });
 
   return buttons;
@@ -49,7 +47,7 @@ function ButtonsFactory(dialogSelector, buttonNames) {
 class Dialog {
   constructor(dialogSelector, buttonNames) {
     this.modal = document.querySelector(dialogSelector);
-    this.buttons = ButtonsFactory(dialogSelector, buttonNames);
+    this.buttons = ButtonsFactory(this.modal, buttonNames);
   }
 
   ClearInputs = () => {
@@ -73,6 +71,10 @@ class Dialog {
     this.modal.showModal();
   };
 
+  CloseModal = () => {
+    this.modal.close();
+  };
+
   set invoke(node) {
     this._invoke = node;
 
@@ -86,17 +88,18 @@ export const bookInfo = new Dialog("#book-info", ["cancel"]);
 export const deleteBook = new Dialog("#delete-book", ["cancel", "delete"]);
 
 // Input Mixins
-createBook.inputs = InputsFactory("#create-book");
-editBook.inputs = InputsFactory("#edit-book");
+createBook.inputs = InputsFactory(createBook.modal);
+editBook.inputs = InputsFactory(editBook.modal);
 
 // Output Mixins
-bookInfo.outputs = OutputsFactory("#book-info");
-deleteBook.outputs = OutputsFactory("#delete-book");
+bookInfo.outputs = OutputsFactory(bookInfo.modal);
+deleteBook.outputs = OutputsFactory(deleteBook.modal);
 
 // Set invoke elements
 createBook.invoke = invokeCreateBookButton;
 
 console.log(createBook);
+console.log(deleteBook);
 
 // Functions
 
@@ -137,8 +140,6 @@ function InvokeEditBook(book) {
 createBook.buttons.cancel.addEventListener("click", () =>
   createBook.modal.close()
 );
-createBook.modal.addEventListener("close", () => ClearInputs(createBook));
-
 // Open book events
 bookInfo.buttons.cancel.addEventListener("click", () => bookInfo.modal.close());
 
