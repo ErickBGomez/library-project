@@ -3,12 +3,7 @@ import {
   SetCustomValidity,
   CustomSubmit,
 } from "./inputValidation.js";
-import { bookCards, AddBook, EditBook } from "./books.js";
-
-// Invoke dialogs
-const invokeCreateBookNode = document.querySelector(
-  "button.create-book-button"
-);
+import { books, bookCards, AddBook, EditBook } from "./books.js";
 
 function InputsFactory(dialog) {
   const modal = dialog.modal;
@@ -82,12 +77,17 @@ class Dialog {
     }
   };
 
-  InvokeModal = () => {
+  InvokeCallback = null;
+
+  InvokeModal = (book) => {
     if ("inputs" in this) {
       this.ClearInputs();
     }
 
     this.modal.showModal();
+
+    if (!this.InvokeCallback) return;
+    this.InvokeCallback(book);
   };
 
   set invoke(node) {
@@ -95,7 +95,10 @@ class Dialog {
 
     if (Array.isArray(node)) {
       node.forEach((n) => {
-        n.addEventListener("click", this.InvokeModal);
+        n.addEventListener(
+          "click",
+          this.InvokeModal.bind(this, n.dataset.bookid)
+        );
       });
     } else {
       node.addEventListener("click", this.InvokeModal);
@@ -112,9 +115,18 @@ const deleteBook = new Dialog("#delete-book", ["cancel", "delete"]);
 createBook.inputs = InputsFactory(createBook);
 editBook.inputs = InputsFactory(editBook);
 
-// Unique properties
-bookInfo.currentBook = null;
-bookInfo.currentIndex = null;
+// Unique properties:
+// Book info
+Object.defineProperty(bookInfo, "currentBook", {
+  set(index) {
+    this.currentIndex = index;
+    this._currentBook = books[index];
+  },
+
+  get() {
+    return this._currentBook;
+  },
+});
 
 // Submit callbacks
 createBook.submitCallback = function () {
@@ -130,7 +142,7 @@ createBook.submitCallback = function () {
 
 editBook.submitCallback = function () {
   EditBook(
-    editBook.currentIndex,
+    bookInfo.currentIndex,
     editBook.inputs.title.value,
     editBook.inputs.author.value,
     editBook.inputs.pages.value,
@@ -138,33 +150,28 @@ editBook.submitCallback = function () {
   );
 };
 
+// Invoke callbacks
+bookInfo.InvokeCallback = (bookIndex) => {
+  bookInfo.currentBook = bookIndex;
+
+  bookInfo.outputs.title.innerText = bookInfo.currentBook.title;
+  bookInfo.outputs.author.innerText = bookInfo.currentBook.author;
+  bookInfo.outputs.pages.innerText = `${bookInfo.currentBook.pages} pages`;
+  bookInfo.outputs.readState.innerText = bookInfo.currentBook.readState
+    ? "Already read"
+    : "Not read yet";
+};
+
 // Output Mixins
 bookInfo.outputs = OutputsFactory(bookInfo);
 deleteBook.outputs = OutputsFactory(deleteBook);
 
 // Set invoke elements
-createBook.invoke = invokeCreateBookNode;
-bookInfo.invoke = bookCards;
-
-console.log(bookInfo);
+createBook.invoke = document.querySelector("button.create-book-button");
+editBook.invoke = bookInfo.modal.querySelector("i.edit");
+deleteBook.invoke = bookInfo.modal.querySelector("i.delete");
 
 // Functions
-
-export function InvokeBookInfo(book, index) {
-  // Object info
-  bookInfo.info.currentBook = book;
-  bookInfo.info.currentIndex = index;
-
-  // Book info to dialog
-  bookInfo.elements.title.innerText = book.title;
-  bookInfo.elements.author.innerText = book.author;
-  bookInfo.elements.pages.innerText = `${book.pages} pages`;
-  bookInfo.elements.readState.innerText = book.readState
-    ? "Already read"
-    : "Not read yet";
-
-  InvokeModal(bookInfo);
-}
 
 export function InvokeDeleteBook(book) {
   deleteBook.elements.title.innerText = book.title;
