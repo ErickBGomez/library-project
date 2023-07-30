@@ -57,8 +57,10 @@ export function AddBook(title, author, pages, readState) {
   RefreshBooks();
 }
 
-function DeleteBook(bookIndex) {
+export function DeleteBook(bookIndex) {
   books.splice(bookIndex, 1);
+
+  RefreshBooks();
 }
 
 export function EditBook(index, title, author, pages, readState) {

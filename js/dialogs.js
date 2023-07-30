@@ -3,7 +3,7 @@ import {
   SetCustomValidity,
   CustomSubmit,
 } from "./inputValidation.js";
-import { books, bookCards, AddBook, EditBook } from "./books.js";
+import { books, bookCards, AddBook, EditBook, DeleteBook } from "./books.js";
 
 function InputsFactory(dialog) {
   const modal = dialog.modal;
@@ -119,7 +119,7 @@ editBook.inputs = InputsFactory(editBook);
 bookInfo.outputs = OutputsFactory(bookInfo);
 deleteBook.outputs = OutputsFactory(deleteBook);
 
-// Unique properties
+// Getters and setters
 Object.defineProperty(bookInfo, "currentIndex", {
   set(index) {
     this.currentBook = books[index];
@@ -183,6 +183,18 @@ deleteBook.InvokeCallback = () => {
   deleteBook.outputs.title.innerText = bookInfo.currentBook.title;
   deleteBook.outputs.author.innerText = bookInfo.currentBook.author;
 };
+
+// Custom functions
+
+deleteBook.deleteBook = () => {
+  DeleteBook(bookInfo.currentIndex);
+  deleteBook.modal.close();
+  bookInfo.modal.close();
+
+  bookInfo.invoke = bookCards;
+};
+
+deleteBook.buttons.delete.addEventListener("click", deleteBook.deleteBook);
 
 // Set invoke elements
 createBook.invoke = document.querySelector("button.create-book-button");
