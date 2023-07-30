@@ -68,18 +68,6 @@ export function EditBook(index, title, author, pages, readState) {
   books[index] = newBook;
 
   RefreshBooks();
-
-  bookInfo.modal.close();
-  InvokeBookInfo(books[index], index);
 }
 
 RefreshBooks();
-
-// Events
-// deleteBook.buttons.delete.addEventListener("click", () => {
-//   DeleteBook(bookInfo.info.currentIndex);
-//   RefreshBooks();
-
-//   deleteBook.modal.close();
-//   bookInfo.modal.close();
-// });

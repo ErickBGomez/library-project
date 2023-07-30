@@ -151,6 +151,13 @@ editBook.submitCallback = function () {
     editBook.inputs.pages.value,
     editBook.inputs.readState.checked
   );
+
+  // Refresh books for bookInfo dialog
+  bookInfo.invoke = bookCards;
+
+  // Close bookInfo and open with updated information
+  bookInfo.modal.close();
+  bookInfo.InvokeModal(bookInfo.currentIndex);
 };
 
 // Invoke callbacks
