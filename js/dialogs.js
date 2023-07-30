@@ -16,11 +16,11 @@ function InputsFactory(dialog) {
     readState: modal.querySelector(`input#${modal.id}-read-state`),
   };
 
-  for (const e in inputs) {
-    if (e === "readState") break;
-    inputs[e].customValidate = SetCustomValidity;
-    inputs[e].validate = ValidateInput;
-    inputs[e].addEventListener("input", inputs[e].validate);
+  for (const key in inputs) {
+    if (key === "readState") break;
+    inputs[key].customValidate = SetCustomValidity;
+    inputs[key].validate = ValidateInput;
+    inputs[key].addEventListener("input", inputs[key].validate);
   }
 
   dialog.customSubmit = CustomSubmit;

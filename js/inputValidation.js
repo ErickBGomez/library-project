@@ -1,5 +1,3 @@
-const createBookForm = document.querySelector("form#create-book-form");
-const editBookForm = document.querySelector("form#edit-book-form");
 const numbersRegex = /^\d+$/;
 
 export function SetCustomValidity(message) {
@@ -24,16 +22,6 @@ export function ValidateInput() {
   } else {
     this.customValidate();
   }
-}
-
-function EditBookCallback() {
-  EditBook(
-    bookInfo.info.currentIndex,
-    editBook.inputs.title.value,
-    editBook.inputs.author.value,
-    editBook.inputs.pages.value,
-    editBook.inputs.readState.checked
-  );
 }
 
 export function CustomSubmit(e, callback) {
