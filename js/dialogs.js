@@ -79,7 +79,7 @@ class Dialog {
 
   InvokeCallback = null;
 
-  InvokeModal = (book) => {
+  InvokeModal = (bookIndex) => {
     if ("inputs" in this) {
       this.ClearInputs();
     }
@@ -87,19 +87,19 @@ class Dialog {
     this.modal.showModal();
 
     if (!this.InvokeCallback) return;
-    this.InvokeCallback(book);
+    this.InvokeCallback(bookIndex);
   };
 
   set invoke(node) {
     this._invoke = node;
 
     if (Array.isArray(node)) {
-      node.forEach((n) => {
+      node.forEach((n) =>
         n.addEventListener(
           "click",
           this.InvokeModal.bind(this, n.dataset.bookid)
-        );
-      });
+        )
+      );
     } else {
       node.addEventListener("click", this.InvokeModal);
     }
@@ -117,14 +117,14 @@ editBook.inputs = InputsFactory(editBook);
 
 // Unique properties:
 // Book info
-Object.defineProperty(bookInfo, "currentBook", {
+Object.defineProperty(bookInfo, "currentIndex", {
   set(index) {
-    this.currentIndex = index;
-    this._currentBook = books[index];
+    this.currentBook = books[index];
+    this._currentIndex = index;
   },
 
   get() {
-    return this._currentBook;
+    return this._currentIndex;
   },
 });
 
@@ -152,7 +152,7 @@ editBook.submitCallback = function () {
 
 // Invoke callbacks
 bookInfo.InvokeCallback = (bookIndex) => {
-  bookInfo.currentBook = bookIndex;
+  bookInfo.currentIndex = bookIndex;
 
   bookInfo.outputs.title.innerText = bookInfo.currentBook.title;
   bookInfo.outputs.author.innerText = bookInfo.currentBook.author;
@@ -160,6 +160,11 @@ bookInfo.InvokeCallback = (bookIndex) => {
   bookInfo.outputs.readState.innerText = bookInfo.currentBook.readState
     ? "Already read"
     : "Not read yet";
+};
+
+deleteBook.InvokeCallback = () => {
+  deleteBook.outputs.title.innerText = bookInfo.currentBook.title;
+  deleteBook.outputs.author.innerText = bookInfo.currentBook.author;
 };
 
 // Output Mixins
