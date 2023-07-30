@@ -115,8 +115,11 @@ const deleteBook = new Dialog("#delete-book", ["cancel", "delete"]);
 createBook.inputs = InputsFactory(createBook);
 editBook.inputs = InputsFactory(editBook);
 
-// Unique properties:
-// Book info
+// Output Mixins
+bookInfo.outputs = OutputsFactory(bookInfo);
+deleteBook.outputs = OutputsFactory(deleteBook);
+
+// Unique properties
 Object.defineProperty(bookInfo, "currentIndex", {
   set(index) {
     this.currentBook = books[index];
@@ -173,10 +176,6 @@ deleteBook.InvokeCallback = () => {
   deleteBook.outputs.title.innerText = bookInfo.currentBook.title;
   deleteBook.outputs.author.innerText = bookInfo.currentBook.author;
 };
-
-// Output Mixins
-bookInfo.outputs = OutputsFactory(bookInfo);
-deleteBook.outputs = OutputsFactory(deleteBook);
 
 // Set invoke elements
 createBook.invoke = document.querySelector("button.create-book-button");
