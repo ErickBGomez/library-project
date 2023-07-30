@@ -151,6 +151,13 @@ editBook.submitCallback = function () {
 };
 
 // Invoke callbacks
+editBook.InvokeCallback = () => {
+  editBook.inputs.title.value = bookInfo.currentBook.title;
+  editBook.inputs.author.value = bookInfo.currentBook.author;
+  editBook.inputs.pages.value = bookInfo.currentBook.pages;
+  editBook.inputs.readState.checked = bookInfo.currentBook.readState;
+};
+
 bookInfo.InvokeCallback = (bookIndex) => {
   bookInfo.currentIndex = bookIndex;
 
@@ -175,30 +182,3 @@ deleteBook.outputs = OutputsFactory(deleteBook);
 createBook.invoke = document.querySelector("button.create-book-button");
 editBook.invoke = bookInfo.modal.querySelector("i.edit");
 deleteBook.invoke = bookInfo.modal.querySelector("i.delete");
-
-// Functions
-
-export function InvokeDeleteBook(book) {
-  deleteBook.elements.title.innerText = book.title;
-  deleteBook.elements.author.innerText = book.author;
-
-  InvokeModal(deleteBook);
-}
-
-function InvokeEditBook(book) {
-  InvokeModal(editBook);
-
-  editBook.inputs.title.value = book.title;
-  editBook.inputs.author.value = book.author;
-  editBook.inputs.pages.value = book.pages;
-  editBook.inputs.readState.checked = book.readState;
-}
-
-deleteBook.buttons.invoke.addEventListener("click", () => {
-  InvokeDeleteBook(bookInfo.info.currentBook);
-});
-
-// Edit book events
-editBook.buttons.invoke.addEventListener("click", () =>
-  InvokeEditBook(bookInfo.info.currentBook)
-);
