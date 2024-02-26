@@ -1,9 +1,5 @@
-import {
-  ValidateInput,
-  SetCustomValidity,
-  CustomSubmit,
-} from "./inputValidation.js";
-import { books, bookCards, AddBook, EditBook, DeleteBook } from "./books.js";
+import * as validate from "./inputValidation.js";
+import * as books from "./books.js";
 
 function InputsFactory(dialog) {
   const modal = dialog.modal;
@@ -18,12 +14,12 @@ function InputsFactory(dialog) {
 
   for (const key in inputs) {
     if (key === "readState") break;
-    inputs[key].customValidate = SetCustomValidity;
-    inputs[key].validate = ValidateInput;
+    inputs[key].customValidate = validate.SetCustomValidity;
+    inputs[key].validate = validate.ValidateInput;
     inputs[key].addEventListener("input", inputs[key].validate);
   }
 
-  dialog.customSubmit = CustomSubmit;
+  dialog.customSubmit = validate.CustomSubmit;
   dialog.submitCallback = null;
 
   form.addEventListener("submit", (e) =>
@@ -122,7 +118,7 @@ deleteBook.outputs = OutputsFactory(deleteBook);
 // Getters and setters
 Object.defineProperty(bookInfo, "currentIndex", {
   set(index) {
-    this.currentBook = books[index];
+    this.currentBook = books.books[index];
     this._currentIndex = index;
   },
 
@@ -133,18 +129,18 @@ Object.defineProperty(bookInfo, "currentIndex", {
 
 // Submit callbacks
 createBook.submitCallback = function () {
-  AddBook(
+  books.AddBook(
     createBook.inputs.title.value,
     createBook.inputs.author.value,
     createBook.inputs.pages.value,
     createBook.inputs.readState.checked
   );
 
-  bookInfo.invoke = bookCards;
+  bookInfo.invoke = books.bookCards;
 };
 
 editBook.submitCallback = function () {
-  EditBook(
+  books.EditBook(
     bookInfo.currentIndex,
     editBook.inputs.title.value,
     editBook.inputs.author.value,
@@ -153,7 +149,7 @@ editBook.submitCallback = function () {
   );
 
   // Refresh books for bookInfo dialog
-  bookInfo.invoke = bookCards;
+  bookInfo.invoke = books.bookCards;
 
   // Close bookInfo and open with updated information
   bookInfo.modal.close();
@@ -187,11 +183,11 @@ deleteBook.InvokeCallback = () => {
 // Custom functions
 
 deleteBook.deleteBook = () => {
-  DeleteBook(bookInfo.currentIndex);
+  books.DeleteBook(bookInfo.currentIndex);
   deleteBook.modal.close();
   bookInfo.modal.close();
 
-  bookInfo.invoke = bookCards;
+  bookInfo.invoke = books.bookCards;
 };
 
 deleteBook.buttons.delete.addEventListener("click", deleteBook.deleteBook);

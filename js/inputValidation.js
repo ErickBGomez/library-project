@@ -1,6 +1,6 @@
 const numbersRegex = /^\d+$/;
 
-export function SetCustomValidity(message) {
+function SetCustomValidity(message) {
   const validationMsg = this.parentElement.querySelector("span.validation-msg");
 
   if (!message) {
@@ -12,7 +12,7 @@ export function SetCustomValidity(message) {
   validationMsg.innerText = `* ${message}`;
 }
 
-export function ValidateInput() {
+function ValidateInput() {
   if (this.type === "checkbox") return;
 
   if (!this.value) {
@@ -24,7 +24,7 @@ export function ValidateInput() {
   }
 }
 
-export function CustomSubmit(e, callback) {
+function CustomSubmit(e, callback) {
   e.preventDefault();
 
   // Count invalid inputs
@@ -48,3 +48,5 @@ export function CustomSubmit(e, callback) {
     e.target.submit();
   }
 }
+
+export { SetCustomValidity, ValidateInput, CustomSubmit };

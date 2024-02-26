@@ -1,5 +1,5 @@
-export const books = [];
-export let bookCards = [];
+const books = [];
+let bookCards = [];
 let bookId;
 
 const emptyLibraryLabel = document.querySelector(".empty-library");
@@ -49,7 +49,7 @@ function RefreshBooks() {
   }
 }
 
-export function AddBook(title, author, pages, readState) {
+function AddBook(title, author, pages, readState) {
   // Cannot access Book before initialization
   const newBook = new Book(title, author, pages, readState);
   books.push(newBook);
@@ -57,13 +57,13 @@ export function AddBook(title, author, pages, readState) {
   RefreshBooks();
 }
 
-export function DeleteBook(bookIndex) {
+function DeleteBook(bookIndex) {
   books.splice(bookIndex, 1);
 
   RefreshBooks();
 }
 
-export function EditBook(index, title, author, pages, readState) {
+function EditBook(index, title, author, pages, readState) {
   delete books[index];
 
   const newBook = new Book(title, author, pages, readState);
@@ -73,3 +73,5 @@ export function EditBook(index, title, author, pages, readState) {
 }
 
 RefreshBooks();
+
+export { books, bookCards, AddBook, DeleteBook, EditBook };
